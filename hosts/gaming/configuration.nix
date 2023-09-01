@@ -77,14 +77,40 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    ohMyZsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "colored-man-pages"
+        "colorize"
+        "docker-compose"
+        "docker"
+        "dotenv"
+        "dotnet"
+        "git"
+        "npm"
+        "screen"
+        "vscode"
+        "zsh-autosuggestions"
+        "zsh-syntax-highlighting"
+      ];
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${user} = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.${user} = {
+      isNormalUser = true;
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [
+        firefox
+      #  thunderbird
+      ];
+    };
   };
 
   home-manager = {
@@ -131,6 +157,25 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  nix = {                                   # Nix Package Manager settings
+    settings ={
+      auto-optimise-store = true;           # Optimise syslinks
+    };
+    gc = {                                  # Automatic garbage collection
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    package = pkgs.nixVersions.unstable;    # Enable nixFlakes on system
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs          = true
+      keep-derivations      = true
+    '';
+  };
+  nixpkgs.config.allowUnfree = true;        # Allow proprietary software.
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

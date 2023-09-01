@@ -1,4 +1,4 @@
-{ inputs, outputs, ... }:
+{ inputs, outputs, lib, config, pkgs, user, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -78,9 +78,8 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.snyssen = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "Simon Nyssen";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
@@ -89,16 +88,16 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs user; };
     users = {
       # Import your home-manager configuration
-      "snyssen" = import ../home-manager/home.nix;
+      "${user}" = import ./home.nix;
     };
   };
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "snyssen";
+  services.xserver.displayManager.autoLogin.user = "${user}";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;

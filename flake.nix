@@ -17,20 +17,19 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
-    let 
-      user = "snyssen"
-    in
-    {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        ${user}_gaming = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          # > Our main nixos configuration file <
-          modules = [ ./nixos/configuration.nix ];
-        };
+  outputs = { nixpkgs, home-manager, ... }@inputs:
+  let 
+    user = "snyssen";
+  in
+  {
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild --flake .#your-hostname'
+    nixosConfigurations = {
+      gaming = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs user; }; # Pass flake inputs to our config
+        # > Our main nixos configuration file <
+        modules = [ ./hosts/gaming/configuration.nix ];
       };
     };
-  }
+  };
 }

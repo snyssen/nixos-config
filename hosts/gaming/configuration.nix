@@ -7,8 +7,14 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    timeout = null; # Wait indefinitely
+    grub = {
+      enable = true;
+      device = "nodev";
+      useOSProber = true;
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -22,6 +28,8 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Brussels";
+  # Fix for time changing between boot of Windows and Linux
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

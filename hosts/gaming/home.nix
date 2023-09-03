@@ -33,7 +33,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
@@ -45,7 +44,60 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName  = "snyssen";
+    userEmail = "dev@snyssen.be";
+  };
+  programs.direnv.enable = true;
+  programs.zsh = {
+    oh-my-zsh = {
+      enable = true;
+      theme = "powerlevel10k/powerlevel10k";
+      plugins = [
+        "colored-man-pages"
+        "colorize"
+        "docker-compose"
+        "docker"
+        "dotenv"
+        "dotnet"
+        "git"
+        "npm"
+        "screen"
+        "vscode"
+        "zsh-autosuggestions"
+        "zsh-syntax-highlighting"
+      ];
+    };
+
+    initExtraBeforeCompInit = ''
+      # p10k instant prompt
+      P10K_INSTANT_PROMPT="$XDG_CACHE_HOME/p10k-instant-prompt-''${(%):-%n}.zsh"
+      [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+    '';
+
+    plugins = with pkgs; [
+      {
+        # A prompt will appear the first time to configure it properly
+        # make sure to select MesloLGS NF as the font in Konsole
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        # file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.zsh-autosuggestions;
+      }
+      {
+        name = "you-should-use";
+        src = pkgs.zsh-you-should-use;
+      }
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.zsh-syntax-highlighting;
+      }
+    ];
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

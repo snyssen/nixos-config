@@ -16,7 +16,7 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "gaming"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -85,27 +85,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  programs.zsh = {
+  programs.zsh = { 
     enable = true;
     autosuggestions.enable = true;
-    ohMyZsh = {
-      enable = true;
-      theme = "robbyrussell";
-      plugins = [
-        "colored-man-pages"
-        "colorize"
-        "docker-compose"
-        "docker"
-        "dotenv"
-        "dotnet"
-        "git"
-        "npm"
-        "screen"
-        "vscode"
-        "zsh-autosuggestions"
-        "zsh-syntax-highlighting"
-      ];
-    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

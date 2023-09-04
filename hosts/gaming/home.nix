@@ -51,6 +51,8 @@
   };
   programs.direnv.enable = true;
   programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
     oh-my-zsh = {
       enable = true;
       theme = "powerlevel10k/powerlevel10k";

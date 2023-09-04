@@ -9,10 +9,12 @@
   # Bootloader.
   boot.loader = {
     timeout = null; # Wait indefinitely
+    efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
       device = "nodev";
       useOSProber = true;
+      efiSupport = true;
     };
   };
 

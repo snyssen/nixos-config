@@ -52,7 +52,6 @@
   programs.direnv.enable = true;
   programs.zsh = {
     enable = true;
-    autosuggestions.enable = true;
     oh-my-zsh = {
       enable = true;
       theme = "powerlevel10k/powerlevel10k";
@@ -84,7 +83,7 @@
         # make sure to select MesloLGS NF as the font in Konsole
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
-        # file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
         name = "zsh-autosuggestions";

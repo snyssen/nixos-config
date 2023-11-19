@@ -109,7 +109,7 @@
       vscode-marketplace.ms-vscode-remote.remote-containers
       vscode-marketplace.ms-azuretools.vscode-docker
       vscode-marketplace.hediet.vscode-drawio
-      vscode-marketplace.EditorConfig.EditorConfig
+      vscode-marketplace.editorconfig.editorconfig
       vscode-marketplace.dbaeumer.vscode-eslint
       vscode-marketplace.github.vscode-github-actions
       vscode-marketplace.eamodio.gitlens
@@ -118,11 +118,11 @@
       vscode-marketplace.oderwat.indent-rainbow
       vscode-marketplace.whtouche.vscode-js-console-utils
       vscode-marketplace.yzhang.markdown-all-in-one
-      vscode-marketplace.DavidAnson.vscode-markdownlint
+      vscode-marketplace.davidanson.vscode-markdownlint
       vscode-marketplace.unifiedjs.vscode-mdx
-      vscode-marketplace.bbenoist.Nix
+      vscode-marketplace.bbenoist.nix
       vscode-marketplace.christian-kohler.npm-intellisense
-      vscode-marketplace.YuTengjing.open-in-external-app
+      vscode-marketplace.yutengjing.open-in-external-app
       vscode-marketplace.johnpapa.vscode-peacock
       vscode-marketplace.esbenp.prettier-vscode
       vscode-marketplace.ms-python.python
@@ -130,7 +130,7 @@
       vscode-marketplace.ms-vscode-remote.vscode-remote-extensionpack
       vscode-marketplace.timonwong.shellcheck
       vscode-marketplace.bradlc.vscode-tailwindcss
-      vscode-marketplace.Gruntfuggly.todo-tree
+      vscode-marketplace.gruntfuggly.todo-tree
       vscode-marketplace.bbenoist.vagrant
       vscode-marketplace.vscode-icons-team.vscode-icons
       vscode-marketplace.ms-vscode-remote.remote-wsl

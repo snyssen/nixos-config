@@ -101,7 +101,7 @@
   };
   programs.vscode = {
     enable = true;
-    extensions = with inputs.nix-vscode-extensions.extensions.${system}; [
+    extensions = with inputs.nix-vscode-extensions.extensions.${builtins.currentSystem}; [
       vscode-marketplace.golang.go
       vscode-marketplace.astro-build.astro-vscode
       vscode-marketplace.redhat.ansible

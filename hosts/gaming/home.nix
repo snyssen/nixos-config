@@ -99,7 +99,12 @@
       }
     ];
   };
-  programs.vscode.enable = true;
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs; [
+      pkgs.vscode-extensions.astro-build.astro-vscode
+    ];
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

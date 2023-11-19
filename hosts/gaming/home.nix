@@ -101,9 +101,10 @@
   };
   programs.vscode = {
     enable = true;
-    extensions = with pkgs; [
-      pkgs.vscode-extensions.astro-build.astro-vscode
-      pkgs.vscode-extensions.redhat.ansible
+    extensions = with inputs.nix-vscode-extensions.extensions.${system}; [
+      vscode-marketplace.golang.go
+      vscode-marketplace.astro-build.astro-vscode
+      vscode-marketplace.redhat.ansible
     ];
   };
 

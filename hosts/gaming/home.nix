@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, user, system, ... }: {
+{ inputs, lib, config, pkgs, user, systemName, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -101,7 +101,7 @@
   };
   programs.vscode = {
     enable = true;
-    extensions = with inputs.nix-vscode-extensions.extensions.${system}; [
+    extensions = with inputs.nix-vscode-extensions.extensions.${systemName}; [
       vscode-marketplace.golang.go
       vscode-marketplace.astro-build.astro-vscode
       vscode-marketplace.redhat.ansible

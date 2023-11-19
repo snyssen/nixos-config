@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, user, system ? "x86_64-linux", ... }:
+{ inputs, outputs, lib, config, pkgs, user, systemName ? "x86_64-linux", ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -102,7 +102,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs user system; };
+    extraSpecialArgs = { inherit inputs outputs user systemName; };
     users = {
       # Import your home-manager configuration
       "${user}" = import ./home.nix;

@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, user, ... }:
+{ inputs, outputs, lib, config, pkgs, user, system ? "x86_64-linux", ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -102,7 +102,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs user; };
+    extraSpecialArgs = { inherit inputs outputs user system; };
     users = {
       # Import your home-manager configuration
       "${user}" = import ./home.nix;
@@ -172,4 +172,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-}
+};

@@ -103,6 +103,7 @@
     enable = true;
     extensions = with pkgs; [
       pkgs.vscode-extensions.astro-build.astro-vscode
+      pkgs.vscode-extensions.redhat.ansible
     ];
   };
 

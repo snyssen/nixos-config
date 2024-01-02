@@ -27,8 +27,15 @@
     nixosConfigurations = {
       gaming = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs user; }; # Pass flake inputs to our config
-        # > Our main nixos configuration file <
-        modules = [ ./hosts/gaming/configuration.nix ];
+        modules = [
+          ./common/configuration.nix
+          ./hosts/gaming/configuration.nix ];
+      };
+      test = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs user; }; # Pass flake inputs to our config
+        modules = [
+          ./common/configuration.nix
+          ./hosts/test/configuration.nix ];
       };
     };
   };

@@ -17,8 +17,6 @@
     };
   };
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Fix for time changing between boot of Windows and Linux
   time.hardwareClockInLocalTime = true;
 
@@ -31,4 +29,13 @@
 
   # Configure console keymap
   console.keyMap = "fr";
+
+  services.syncthing = {
+    enable = false;
+    user = "${user}";
+    dataDir = "/home/${user}/Documents";
+    configDir = "/home/${user}/Documents/.config/syncthing";
+    # overrideDevices = true;
+    # overrideFolders = true;
+  };
 }

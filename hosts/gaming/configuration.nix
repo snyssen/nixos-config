@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, user, ... }:
+{ inputs, outputs, lib, config, pkgs, user, hostname, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -17,7 +17,6 @@
     };
   };
 
-  networking.hostName = "gaming"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Fix for time changing between boot of Windows and Linux

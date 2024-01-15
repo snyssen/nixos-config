@@ -1,9 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, user, ... }:
+{ inputs, outputs, lib, config, pkgs, user, hostname, ... }:
 {
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
     ];
+
+  networking.hostName = hostname; # Define your hostname.
 
   networking.networkmanager.enable = true;
 
@@ -74,7 +76,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs user; };
+    extraSpecialArgs = { inherit inputs outputs user hostname; };
     users = {
       # Import your home-manager configuration
       "${user}" = import ./home.nix;

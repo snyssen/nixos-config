@@ -26,13 +26,16 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      gaming = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs user; }; # Pass flake inputs to our config
+      gaming = let hostname = "gaming";
+      in nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs user hostname; }; # Pass flake inputs to our config
         modules = [
           ./common/configuration.nix
-          ./hosts/gaming/configuration.nix ];
+          ./hosts/${hostname}/configuration.nix
+        ];
       };
-      test = nixpkgs.lib.nixosSystem {
+      test = let hostname = "test";
+      in nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs user; }; # Pass flake inputs to our config
         modules = [
           ./common/configuration.nix

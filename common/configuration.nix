@@ -5,16 +5,20 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  networking.hostName = hostname; # Define your hostname.
+  networking = {
+    hostName = hostname;
+    networkmanager.enable = true;
 
-  networking.networkmanager.enable = true;
+    firewall.enable = true;
+    # Open ports in the firewall for:
+    # - KDE Connect
+    firewall.allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    firewall.allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+  };
 
-  # Set your time zone.
   time.timeZone = "Europe/Brussels";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_BE.UTF-8";
     LC_IDENTIFICATION = "fr_BE.UTF-8";
@@ -116,12 +120,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   nix = {                                   # Nix Package Manager settings
     settings ={

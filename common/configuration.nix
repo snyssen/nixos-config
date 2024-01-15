@@ -98,6 +98,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     inputs.nix-software-center.packages."${system}".nix-software-center
+    pkgs.gnomeExtensions.caffeine
+    pkgs.gnomeExtensions.pop-shell
+    pkgs.gnomeExtensions.gsconnect
+    pkgs.gnomeExtensions.dash-to-dock
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

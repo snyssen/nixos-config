@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, user, hostname, ... }: {
+{ inputs, lib, config, pkgs, user, hostname, system, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -99,8 +99,7 @@
   };
   programs.vscode = {
     enable = true;
-    # TODO: Replace "x86_64-linux" with system variable
-    extensions = with inputs.nix-vscode-extensions.extensions."x86_64-linux"; [
+    extensions = with inputs.nix-vscode-extensions.extensions."${system}"; [
       vscode-marketplace.redhat.ansible
       vscode-marketplace.astro-build.astro-vscode
       vscode-marketplace.aaron-bond.better-comments

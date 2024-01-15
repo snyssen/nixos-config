@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, user, hostname, ... }:
+{ inputs, outputs, lib, config, pkgs, user, hostname, system, ... }:
 {
   imports =
     [
@@ -76,7 +76,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs user hostname; };
+    extraSpecialArgs = { inherit inputs outputs user hostname system; };
     users = {
       # Import your home-manager configuration
       "${user}" = import ./home.nix;
@@ -97,8 +97,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # TODO: Replace "x86_64-linux" with system variable
-    inputs.nix-software-center.packages."x86_64-linux".nix-software-center
+    inputs.nix-software-center.packages."${system}".nix-software-center
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -98,6 +98,7 @@
   };
   programs.vscode = {
     enable = true;
+    # TODO: Replace "x86_64-linux" with system variable
     extensions = with inputs.nix-vscode-extensions.extensions."x86_64-linux"; [
       vscode-marketplace.redhat.ansible
       vscode-marketplace.astro-build.astro-vscode

@@ -95,8 +95,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    # TODO: Replace "x86_64-linux" with system variable
+    inputs.nix-software-center.packages."x86_64-linux".nix-software-center
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

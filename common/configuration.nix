@@ -110,6 +110,7 @@
 
     pkgs.sops
     pkgs.ssh-to-age
+    pkgs.git-crypt
   ];
 
   programs.gnupg.agent = {

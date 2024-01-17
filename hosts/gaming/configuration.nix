@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, user, hostname, ... }:
+{ inputs, outputs, lib, config, pkgs, user, secrets, hostname, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -31,11 +31,19 @@
   console.keyMap = "fr";
 
   services.syncthing = {
-    enable = false;
+    enable = true;
     user = "${user}";
     dataDir = "/home/${user}/Documents";
     configDir = "/home/${user}/Documents/.config/syncthing";
-    # overrideDevices = true;
-    # overrideFolders = true;
+    overrideDevices = true;
+    overrideFolders = true;
+    devices = secrets.syncthing.devices;
+  };
+
+  networking = {
+    # Open ports in the firewall for:
+    # - syncthing
+    firewall.allowedTCPPorts = [ 22000 ];
+    firewall.allowedUDPPorts = [ 22000 21027 ];
   };
 }

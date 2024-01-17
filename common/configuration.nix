@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, user, hostname, system, ... }:
+{ inputs, outputs, lib, config, pkgs, user, secrets, hostname, system, ... }:
 {
   imports =
     [
@@ -80,7 +80,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs user hostname system; };
+    extraSpecialArgs = { inherit inputs outputs user secrets hostname system; };
     users = {
       # Import your home-manager configuration
       "${user}" = import ./home.nix;

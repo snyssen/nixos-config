@@ -38,6 +38,7 @@
     overrideDevices = true;
     overrideFolders = true;
     devices = secrets.syncthing.devices;
+    folders = secrets.syncthing.folders;
   };
 
   networking = {

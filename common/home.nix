@@ -86,6 +86,10 @@
       [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
     '';
 
+    initExtra = ''
+      EDITOR="code --wait"
+    '';
+
     plugins = with pkgs; [
       {
         # A prompt will appear the first time to configure it properly

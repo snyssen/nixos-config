@@ -29,6 +29,7 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
+  programs.xwayland.enable = true;
 
   hardware.nvidia = {
 

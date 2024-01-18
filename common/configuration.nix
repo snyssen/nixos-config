@@ -107,6 +107,7 @@
     pkgs.gnomeExtensions.pop-shell
     pkgs.gnomeExtensions.gsconnect
     pkgs.gnomeExtensions.dash-to-dock
+    pkgs.gnomeExtensions.syncthing-indicator
 
     pkgs.sops
     pkgs.ssh-to-age

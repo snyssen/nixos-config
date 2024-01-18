@@ -47,4 +47,6 @@
     firewall.allowedTCPPorts = [ 22000 ];
     firewall.allowedUDPPorts = [ 22000 21027 ];
   };
+
+  programs.gamemode.enable = true;
 }

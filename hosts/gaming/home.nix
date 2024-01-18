@@ -1,6 +1,11 @@
 { inputs, lib, config, pkgs, user, hostname, ... }: {
     home.packages = with pkgs; [
         prismlauncher
-        pkgs.gnome.dconf-editor
+        gnome.dconf-editor
+        (retroarch.override {
+            cores = with libretro; [
+                pcsx2
+            ];
+        })
     ];
 }

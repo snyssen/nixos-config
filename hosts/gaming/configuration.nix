@@ -16,6 +16,8 @@
       efiSupport = true;
     };
   };
+  boot.initrd.kernelModules = [ "nvidia" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   # Fix for time changing between boot of Windows and Linux
   time.hardwareClockInLocalTime = true;

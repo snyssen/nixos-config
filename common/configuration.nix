@@ -112,6 +112,7 @@
     pkgs.sops
     pkgs.ssh-to-age
     pkgs.git-crypt
+    pkgs.smartmontools
   ];
 
   programs.gnupg.agent = {

@@ -30,7 +30,7 @@
     };
 
     homeConfiguration = {
-      "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix
+      "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix;
     };
 
     homeManagerModules.default = ./homeManagerModules;

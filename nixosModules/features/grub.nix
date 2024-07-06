@@ -9,7 +9,7 @@ in
       default = null;
       description = ''
         Duration (in seconds) until grub boots in default menu item. Defaults to null, i.e. waits indefinitely
-      ''
+      '';
     };
   };
 

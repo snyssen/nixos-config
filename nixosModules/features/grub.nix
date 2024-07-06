@@ -1,6 +1,6 @@
 {lib, config, ...}:
 let
-  cfg = config.myNixOs.grub;
+  cfg = config.myNixOS.grub;
 in
 {
 

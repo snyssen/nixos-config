@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "snyssen's Nixos configurations";
 
   inputs = {
     # Nixpkgs
@@ -18,30 +18,47 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
-  let 
-    user = "snyssen";
-    secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+  outputs = {...}@inputs:
+  let
+    # Small library taken from https://github.com/vimjoyer/nixconf
+    # Helps with reducing boilerplate
+    myLib = import ./myLib/default.nix {inherit inputs;};
   in
-  {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
+  with myLib; {
     nixosConfigurations = {
-      gaming = let hostname = "gaming"; system = "x86_64-linux";
-      in nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs user secrets hostname system; }; # Pass flake inputs to our config
-        modules = [
-          ./common/configuration.nix
-          ./hosts/${hostname}/configuration.nix
-        ];
-      };
-      test = let hostname = "test"; system = "x86_64-linux";
-      in nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs user secrets hostname system; }; # Pass flake inputs to our config
-        modules = [
-          ./common/configuration.nix
-          ./hosts/test/configuration.nix ];
-      };
+      virtualbox = mkSystem ./hosts/virtualbox/configuration.nix;
     };
+
+    homeConfiguration = {
+      "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix
+    };
+
+    homeManagerModules.default = ./homeManagerModules;
+    nixosModules.default = ./nixosModules;
   };
+  # let 
+  #   user = "snyssen";
+  #   secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+  # in
+  # {
+  #   # NixOS configuration entrypoint
+  #   # Available through 'nixos-rebuild --flake .#your-hostname'
+  #   nixosConfigurations = {
+  #     gaming = let hostname = "gaming"; system = "x86_64-linux";
+  #     in nixpkgs.lib.nixosSystem {
+  #       specialArgs = { inherit inputs user secrets hostname system; }; # Pass flake inputs to our config
+  #       modules = [
+  #         ./common/configuration.nix
+  #         ./hosts/${hostname}/configuration.nix
+  #       ];
+  #     };
+  #     test = let hostname = "test"; system = "x86_64-linux";
+  #     in nixpkgs.lib.nixosSystem {
+  #       specialArgs = { inherit inputs user secrets hostname system; }; # Pass flake inputs to our config
+  #       modules = [
+  #         ./common/configuration.nix
+  #         ./hosts/test/configuration.nix ];
+  #     };
+  #   };
+  # };
 }

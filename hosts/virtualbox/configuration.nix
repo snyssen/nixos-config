@@ -9,13 +9,12 @@
   hm,
   ...
 }: {
-  # myNixOS = {
-
-  # };
+  myNixOS = {
+    gnome.enable = true
+  };
 
   imports = [
-    ./hardware-configuration.nix 
-    <nixpkgs/nixos/modules/installer/virtualbox-demo.nix>
+    ./hardware-configuration.nix
   ];
   
   system.name = "virtualbox";

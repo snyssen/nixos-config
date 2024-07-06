@@ -13,7 +13,10 @@
 
   # };
 
-  imports = [ <nixpkgs/nixos/modules/installer/virtualbox-demo.nix> ];
+  imports = [
+    ./hardware-configuration.nix 
+    <nixpkgs/nixos/modules/installer/virtualbox-demo.nix>
+  ];
   
   system.name = "virtualbox";
 

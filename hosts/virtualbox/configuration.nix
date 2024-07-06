@@ -10,13 +10,14 @@
   ...
 }: {
   myNixOS = {
-    grub.enable = true;
     gnome.enable = true;
   };
 
   imports = [
     ./hardware-configuration.nix
   ];
+
+  boot.loader.systemd-boot.enable = true;
 
   system.name = "virtualbox";
 

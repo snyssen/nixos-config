@@ -35,6 +35,6 @@ in
     users.${cfg.username}.imports = [
       outputs.homeManagerModules.default
       (import cfg.home-manager.config)
-    ]
+    ];
   };
 }

@@ -1,14 +1,19 @@
 {lib, config, ...}:
 let
   cfg = config.myNixOS.kbd-layout;
-  opts = options.myNixOS.kbd-layout;
 in
 {
-  opts = {
+  options.myNixOS.kbd-layout = {
     layout = lib.mkOption {
       default = "fr";
       description = ''
         Keyboartd layout to apply
+      '';
+    };
+    additionalLayouts = lib.mkOption {
+      default = [];
+      description = ''
+        Additional keybaord layouts to apply
       '';
     };
   };

@@ -11,6 +11,7 @@
 }: {
   myNixOS = {
     gnome.enable = true;
+    kbd-layout.enable = true;
   };
 
   imports = [

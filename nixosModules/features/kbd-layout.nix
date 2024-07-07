@@ -21,7 +21,7 @@ in
   # Configure keymap in X11
   services.xserver = let layoutLst = [cfg.layout] ++ cfg.additionalLayouts; in {
     # Concatenate as e.g. "fr,be,us"
-    layout = lib.strings.concatMapStringsSep "," layoutLst;
+    layout = lib.strings.concatStringsSep "," layoutLst;
     xkbVariant = "";
   };
 

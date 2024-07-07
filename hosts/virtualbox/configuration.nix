@@ -10,7 +10,14 @@
   ...
 }: {
   myNixOS = {
-    user.enable = true;
+    user = {
+      enable = true;
+      home-manager = {
+        enable = true;
+        config = ./home.nix;
+      };
+    };
+
     gnome.enable = true;
     kbd-layout.enable = true;
     kbd-layout.additionalLayouts = ["be"];

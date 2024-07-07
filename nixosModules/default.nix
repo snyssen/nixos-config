@@ -27,13 +27,16 @@ in {
     ]
     ++ features;
 
-  # options.myNixOS = {
-  #   hyprland.enable = lib.mkEnableOption "enable hyprland";
-  # };
-
   config = {
-    nix.settings.experimental-features = ["nix-command" "flakes"];
-    # programs.nix-ld.enable = true;
+    nix.settings = {
+      experimental-features = ["nix-command" "flakes"];
+      auto-optimise-store = true;
+    };
+    nix.gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d"; # TODO: Variabelize?
+    };
     nixpkgs.config.allowUnfree = true;
   };
 }

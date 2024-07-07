@@ -11,7 +11,7 @@ in
       enable = lib.mkEnableOption "enable home-manager for user";
       config = lib.mkOption {
         description = "Specify the nix module responsible for the configuration of home-manager";
-        example = "./home.nix"
+        example = "./home.nix";
       };
     };
   };

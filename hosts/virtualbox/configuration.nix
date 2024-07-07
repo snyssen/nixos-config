@@ -13,6 +13,7 @@
     user.enable = true;
     gnome.enable = true;
     kbd-layout.enable = true;
+    kbd-layout.additionalLayouts = ["be"];
   };
 
   imports = [

@@ -10,6 +10,7 @@
   ...
 }: {
   myNixOS = {
+    user.enable = true;
     gnome.enable = true;
     kbd-layout.enable = true;
   };

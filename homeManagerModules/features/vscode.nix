@@ -3,6 +3,8 @@
     enable = true;
     # TODO: find a way to propagate system architecture from flake.nix
     extensions = with inputs.nix-vscode-extensions.extensions."x86_64-linux"; [
+      # TODO: only add extensions that are actually needed for all projects
+      # I would like to move onto devcontainers for all projects, with extensions specific for each project defined in the project
       vscode-marketplace.redhat.ansible
       vscode-marketplace.astro-build.astro-vscode
       vscode-marketplace.aaron-bond.better-comments

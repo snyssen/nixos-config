@@ -25,6 +25,10 @@
     i18n.enable = true;
   };
 
+  myHomeManager = {
+    git.enable = true;
+  };
+
   imports = [
     ./hardware-configuration.nix
   ];

@@ -14,6 +14,11 @@ in
         example = "./home.nix";
       };
     };
+    defaultShell = lib.mkOption {
+      type = lib.types.package;
+      description = "The default shell for all users";
+      default = pkgs.bash;
+    }
   };
 
   users.users.${cfg.username} = {
@@ -22,8 +27,7 @@ in
     initialPassword = "123456789";
   };
 
-  users.defaultUserShell = lib.mkIf config.myHomeManager.zsh.enable
-    pkgs.zsh;
+  users.defaultUserShell = cfg.defaultShell;
 
   home-manager = lib.mkIf cfg.home-manager.enable {
     useGlobalPkgs = true;

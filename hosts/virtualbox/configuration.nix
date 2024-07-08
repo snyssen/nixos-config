@@ -16,6 +16,7 @@
         enable = true;
         config = ./home.nix;
       };
+      defaultShell = pkgs.zsh;
     };
 
     # TODO: create bundles

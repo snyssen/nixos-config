@@ -35,7 +35,6 @@
 
     homeManagerModules.default = ./homeManagerModules;
     nixosModules.default = ./nixosModules;
-    dataModules.default = ./data;
   };
   # let 
   #   user = "snyssen";

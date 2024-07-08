@@ -23,7 +23,6 @@ in rec {
         }
         ../hosts/${hostname}/configuration.nix
         outputs.nixosModules.default
-        outputs.dataModules.default
       ];
     };
 

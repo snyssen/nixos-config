@@ -22,6 +22,9 @@ in
     initialPassword = "123456789";
   };
 
+  users.defaultUserShell = lib.mkIf config.myHomeManager.zsh.enable
+    pkgs.zsh;
+
   home-manager = lib.mkIf cfg.home-manager.enable {
     useGlobalPkgs = true;
     useUserPackages = true;

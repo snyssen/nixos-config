@@ -23,9 +23,8 @@ in
   };
 
   home-manager = lib.mkIf cfg.home-manager.enable {
-    # TODO: Check what these do
-    # useGlobalPkgs = true;
-    # useUserPackages = true;
+    useGlobalPkgs = true;
+    useUserPackages = true;
 
     extraSpecialArgs = {
       inherit inputs;

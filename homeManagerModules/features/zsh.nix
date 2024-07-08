@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
     oh-my-zsh = {
       enable = true;
       theme = "powerlevel10k/powerlevel10k";

@@ -11,7 +11,7 @@ in
 
   environment = {
     sessionVariables = {
-      FLAKE = "/home/${username}/nixos-config";
+      FLAKE = "/home/${cfg.username}/nixos-config";
     };
     systemPackages = [ pkgs.nh ];
   };

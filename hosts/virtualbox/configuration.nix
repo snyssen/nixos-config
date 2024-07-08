@@ -19,12 +19,9 @@
       zsh.enable = true;
     };
 
-    # TODO: create bundles
-    gnome.enable = true;
-    kbd-layout.enable = true;
-    kbd-layout.additionalLayouts = ["be"];
-    i18n.enable = true;
-    nh.enable = true;
+    bundles = {
+      gnome.enable = true;
+    };
     syncthing = {
       enable = true;
       username = "snyssen";

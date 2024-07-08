@@ -27,38 +27,15 @@
   with myLib; {
     nixosConfigurations = {
       virtualbox = mkSystem "virtualbox";
+      gaming = mkSystem "gaming";
     };
 
     homeConfiguration = {
       "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix;
+      "snyssen@gaming" = mkHome "x86_64-linux" .hosts/gaming/home.nix;
     };
 
     homeManagerModules.default = ./homeManagerModules;
     nixosModules.default = ./nixosModules;
   };
-  # let 
-  #   user = "snyssen";
-  #   secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
-  # in
-  # {
-  #   # NixOS configuration entrypoint
-  #   # Available through 'nixos-rebuild --flake .#your-hostname'
-  #   nixosConfigurations = {
-  #     gaming = let hostname = "gaming"; system = "x86_64-linux";
-  #     in nixpkgs.lib.nixosSystem {
-  #       specialArgs = { inherit inputs user secrets hostname system; }; # Pass flake inputs to our config
-  #       modules = [
-  #         ./common/configuration.nix
-  #         ./hosts/${hostname}/configuration.nix
-  #       ];
-  #     };
-  #     test = let hostname = "test"; system = "x86_64-linux";
-  #     in nixpkgs.lib.nixosSystem {
-  #       specialArgs = { inherit inputs user secrets hostname system; }; # Pass flake inputs to our config
-  #       modules = [
-  #         ./common/configuration.nix
-  #         ./hosts/test/configuration.nix ];
-  #     };
-  #   };
-  # };
 }

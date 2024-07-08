@@ -1,7 +1,8 @@
 {inputs, system, ...}: {
   programs.vscode = {
     enable = true;
-    extensions = with inputs.nix-vscode-extensions.extensions."${system}"; [
+    # TODO: find a way to propagate system architecture from flake.nix
+    extensions = with inputs.nix-vscode-extensions.extensions."x86_64-linux"; [
       vscode-marketplace.redhat.ansible
       vscode-marketplace.astro-build.astro-vscode
       vscode-marketplace.aaron-bond.better-comments

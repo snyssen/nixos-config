@@ -18,7 +18,7 @@ in
       type = lib.types.package;
       description = "The default shell for all users";
       default = pkgs.bash;
-    }
+    };
   };
 
   users.users.${cfg.username} = {

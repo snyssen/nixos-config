@@ -25,6 +25,7 @@ in
     initialPassword = "123456789";
   };
 
+  programs.home-manager.enable = cfg.home-manager.enable;
   home-manager = lib.mkIf cfg.home-manager.enable {
     useGlobalPkgs = true;
     useUserPackages = true;

@@ -9,6 +9,7 @@
 
   # TODO: move
   home.packages = with pkgs; [
+      firefox
       prismlauncher
       gnome.dconf-editor
       (retroarch.override {

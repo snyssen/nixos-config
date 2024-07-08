@@ -12,8 +12,9 @@ in rec {
 
   # ========================== Buildables ========================== #
 
-  mkSystem = config:
+  mkSystem = sys: config:
     inputs.nixpkgs.lib.nixosSystem {
+      system = sys;
       specialArgs = {
         inherit inputs outputs myLib;
       };

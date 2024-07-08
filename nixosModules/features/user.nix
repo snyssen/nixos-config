@@ -14,20 +14,16 @@ in
         example = "./home.nix";
       };
     };
-    defaultShell = lib.mkOption {
-      type = lib.types.package;
-      description = "The default shell for all users";
-      default = pkgs.bash;
-    };
+    zsh.enable = lib.mkEnableOption "zsh shell for user";
   };
 
+  programs.zsh.enable = cfg.zsh.enable;
   users.users.${cfg.username} = {
     isNormalUser = true;
+    shell = lib.mkIf cfg.zsh.enable pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "123456789";
   };
-
-  users.defaultUserShell = cfg.defaultShell;
 
   home-manager = lib.mkIf cfg.home-manager.enable {
     useGlobalPkgs = true;

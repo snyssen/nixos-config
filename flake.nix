@@ -26,7 +26,7 @@
   in
   with myLib; {
     nixosConfigurations = {
-      virtualbox = mkSystem ./hosts/virtualbox/configuration.nix;
+      virtualbox = mkSystem virtualbox;
     };
 
     homeConfiguration = {

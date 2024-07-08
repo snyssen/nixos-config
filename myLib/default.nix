@@ -12,13 +12,16 @@ in rec {
 
   # ========================== Buildables ========================== #
 
-  mkSystem = config:
+  mkSystem = hostname:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs outputs myLib;
       };
       modules = [
-        config
+        {
+          networking.hostName = hostname;
+        }
+        ../hosts/${hostname}/configuration.nix
         outputs.nixosModules.default
       ];
     };

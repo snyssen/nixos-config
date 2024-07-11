@@ -9,5 +9,6 @@ in
 
   services.flatpak.packages = [
     "ca.desrt.dconf-editor"
+    "ca.hamaluik.Timecop"
   ];
 }

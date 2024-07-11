@@ -8,7 +8,11 @@
   myLib,
   hm,
   ...
-}: {
+}:
+let
+  syncthingData = import ../../data/syncthing.nix;
+in
+{
   myNixOS = {
     user = {
       enable = true;
@@ -25,12 +29,7 @@
     syncthing = {
       enable = true;
       username = "snyssen";
-      devices = {
-        # TODO: export into a "data" module for easy re-use
-        "sync.snyssen.be" = {
-          id = "6QHAMO3-PARP6UW-3Y5J7I4-P5PN2C5-RHS6OMP-QCSBP5Z-6OBZMC3-NZM65QT";
-        };
-      };
+      devices = syncthingData.devices;
       folders = {
         "test-deleteme" = {
           path = "/home/snyssen/Documents";

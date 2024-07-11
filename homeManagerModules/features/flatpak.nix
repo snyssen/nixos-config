@@ -5,7 +5,7 @@ in
 {
   services.flatpak.enable = true;
 
-  imports = [ inputs.flatpaks.homeManagerModules.nix-flatpak ];
+  imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
   services.flatpak.packages = [
     "ca.desrt.dconf-editor"

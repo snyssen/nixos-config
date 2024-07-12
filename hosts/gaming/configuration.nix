@@ -45,10 +45,10 @@
           path = "/home/snyssen/.local/share/PrismLauncher";
           devices = [ "sync.snyssen.be" ];
         };
-        # RetroArch = {
-        #   path = "/home/snyssen/.var/app/org.libretro.RetroArch/config/retroarch";
-        #   devices = [ "sync.snyssen.be" ];
-        # };
+        RetroArch = {
+          path = "/home/snyssen/.config/retroarch";
+          devices = [ "sync.snyssen.be" ];
+        };
       };
     };
   };

@@ -8,7 +8,7 @@
     flatpak = {
       enable = true;
       pkgs = {
-        "org.libretro.RetroArc"
+        "org.libretro.RetroArch"
       };
     };
   };

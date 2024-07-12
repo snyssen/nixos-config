@@ -31,7 +31,6 @@
 
     grub.enable = true;
     nvidia.enable = true;
-    flatpak.enable = true;
     syncthing = {
       enable = true;
       username = "snyssen";
@@ -46,10 +45,10 @@
           path = "/home/snyssen/.local/share/PrismLauncher";
           devices = [ "sync.snyssen.be" ];
         };
-        RetroArch = {
-          path = "/home/snyssen/.var/app/org.libretro.RetroArch/config/retroarch";
-          devices = [ "sync.snyssen.be" ];
-        };
+        # RetroArch = {
+        #   path = "/home/snyssen/.var/app/org.libretro.RetroArch/config/retroarch";
+        #   devices = [ "sync.snyssen.be" ];
+        # };
       };
     };
   };

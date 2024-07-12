@@ -12,5 +12,9 @@ in
     };
   };
 
+  home.packages = with pkgs; [
+      flatpak
+  ];
+
   services.flatpak.packages = cfg.pkgs;
 }

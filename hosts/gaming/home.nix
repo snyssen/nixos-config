@@ -12,6 +12,13 @@
       firefox
       prismlauncher
       gnome.dconf-editor
+      (retroarch.override {
+          cores = with libretro; [
+              pcsx2
+              pcsx-rearmed
+          ];
+      })
+
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

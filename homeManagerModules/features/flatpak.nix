@@ -5,8 +5,12 @@ in
 {
   imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
-  services.flatpak.packages = [
-    "ca.desrt.dconf-editor"
-    "ca.hamaluik.Timecop"
-  ];
+  options.myHomeManager.flatpak = {
+    pkgs = lib.mkOption {
+      type = lib.types.listOf lib.types.string;
+      default = [];
+    };
+  };
+
+  services.flatpak.packages = cfg.pkgs;
 }

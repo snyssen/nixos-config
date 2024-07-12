@@ -5,6 +5,12 @@
     };
 
     dconf.enable = true;
+    flatpak = {
+      enable = true;
+      pkgs = {
+        "org.libretro.RetroArc"
+      };
+    };
   };
 
   # TODO: move
@@ -12,11 +18,6 @@
       firefox
       prismlauncher
       gnome.dconf-editor
-      (retroarch.override {
-          cores = with libretro; [
-              pcsx2
-          ];
-      })
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -31,6 +31,7 @@
 
     grub.enable = true;
     nvidia.enable = true;
+    flatpak.enable = true;
     syncthing = {
       enable = true;
       username = "snyssen";

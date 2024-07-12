@@ -37,7 +37,6 @@ in
         };
       };
     };
-    flatpak.enable = true;
   };
 
   imports = [

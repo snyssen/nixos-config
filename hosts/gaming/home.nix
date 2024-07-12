@@ -7,9 +7,9 @@
     dconf.enable = true;
     flatpak = {
       enable = true;
-      pkgs = {
+      pkgs = [
         "org.libretro.RetroArch"
-      };
+      ];
     };
   };
 

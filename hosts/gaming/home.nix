@@ -5,12 +5,6 @@
     };
 
     dconf.enable = true;
-    flatpak = {
-      enable = true;
-      pkgs = [
-        "org.libretro.RetroArch"
-      ];
-    };
   };
 
   # TODO: move

@@ -1,4 +1,4 @@
-{inputs, lib, config, ...}:
+{inputs, lib, config, pkgs, ...}:
 let
   cfg = config.myHomeManager.flatpak;
 in

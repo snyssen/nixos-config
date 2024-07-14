@@ -48,6 +48,7 @@ in
           devices = [ "sync.snyssen.be" "fedora-workstation" ];
         };
       };
+      gnomeExtension.enable = true;
     };
   };
 

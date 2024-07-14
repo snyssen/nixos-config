@@ -1,4 +1,4 @@
-{lib, config, ...}:
+{lib, config, pkgs, ...}:
 let
   cfg = config.myNixOS.syncthing;
 in
@@ -36,6 +36,7 @@ in
       });
       default = {};
     };
+    gnomeExtension.enable = lib.mkEnableOption "installation of extension for systray";
   };
 
   services.syncthing = {
@@ -48,4 +49,8 @@ in
     devices = cfg.devices;
     folders = cfg.folders;
   };
+
+  environment.systemPackages = lib.mkIf cfg.gnomeExtension.enable [
+    pkgs.gnomeExtensions.syncthing-indicator
+  ];
 }

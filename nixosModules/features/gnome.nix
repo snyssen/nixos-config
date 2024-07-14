@@ -1,4 +1,19 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}:
+let
+  cfg = config.myNixOS.gnome;
+in
+{
+  options.myNixOS.gnome = {
+    autoLogin = {
+      enable = lib.mkOption {
+        default = true;
+      };
+      user = lib.mkOption {
+        default = "snyssen";
+      };
+    };
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -13,4 +28,14 @@
     pkgs.gnomeExtensions.dash-to-dock
     pkgs.gnomeExtensions.syncthing-indicator
   ];
+
+  services.xserver.displayManager.autoLogin = lib.mkIf cfg.autoLogin.enable {
+    enable = cfg.autoLogin.enable;
+    user = cfg.autoLogin.user;
+  };
+  # Workaround, as defined in wiki -> https://wiki.nixos.org/wiki/GNOME#Automatic_login
+  systemd.services = lib.mkIf cfg.autoLogin.enable {
+    "getty@tty1".enable = false;
+    "autovt@tty1".enable = false;
+  };
 }

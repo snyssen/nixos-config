@@ -5,9 +5,7 @@ in
 {
   options.myNixOS.gnome = {
     autoLogin = {
-      enable = lib.mkOption {
-        default = true;
-      };
+      enable = lib.mkEnableOption "autoLogin feature";
       user = lib.mkOption {
         default = "snyssen";
       };

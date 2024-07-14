@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # TODO: set-up p10k configuration
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;

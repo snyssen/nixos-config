@@ -23,7 +23,7 @@
 
     initExtraBeforeCompInit = ''
       # p10k config
-      source share/zsh-powerlevel10k/.p10k.zsh
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/.p10k.zsh
     '';
 
     initExtra = ''
@@ -34,12 +34,12 @@
       {
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        file = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
         name = "powerlevel10k-config";
         src = ../../files/home/p10k-config;
-        file = "share/zsh-powerlevel10k/.p10k.zsh";
+        file = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/.p10k.zsh";
       }
     ];
   };

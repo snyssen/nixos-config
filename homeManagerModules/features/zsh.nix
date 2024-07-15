@@ -26,7 +26,7 @@
 
     initExtraBeforeCompInit = ''
       # p10k config
-      source ~/.p10k.zsh
+      source p10k.zsh
     '';
 
     initExtra = ''

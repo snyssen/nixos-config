@@ -4,6 +4,7 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
+    syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
       theme = "powerlevel10k/powerlevel10k";
@@ -24,9 +25,6 @@
     };
 
     initExtraBeforeCompInit = ''
-      # p10k instant prompt
-      P10K_INSTANT_PROMPT="$XDG_CACHE_HOME/p10k-instant-prompt-''${(%):-%n}.zsh"
-      [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
       # p10k config
       source ~/.p10k.zsh
     '';
@@ -47,18 +45,6 @@
         name = "powerlevel10k-config";
         src = ../../files/home/p10k-config;
         file = "p10k.zsh";
-      }
-      {
-        name = "zsh-autosuggestions";
-        src = pkgs.zsh-autosuggestions;
-      }
-      {
-        name = "you-should-use";
-        src = pkgs.zsh-you-should-use;
-      }
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.zsh-syntax-highlighting;
       }
     ];
   };

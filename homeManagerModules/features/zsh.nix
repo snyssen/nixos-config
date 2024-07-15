@@ -27,6 +27,8 @@
       # p10k instant prompt
       P10K_INSTANT_PROMPT="$XDG_CACHE_HOME/p10k-instant-prompt-''${(%):-%n}.zsh"
       [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+      # p10k config
+      source ~/.p10k.zsh
     '';
 
     initExtra = ''

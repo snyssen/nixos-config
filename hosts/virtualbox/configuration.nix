@@ -26,17 +26,6 @@ in
     bundles = {
       gnome.enable = true;
     };
-    syncthing = {
-      enable = true;
-      username = "snyssen";
-      devices = syncthingData.devices;
-      folders = {
-        "test-deleteme" = {
-          path = "/home/snyssen/Documents";
-          devices = [ "sync.snyssen.be" ];
-        };
-      };
-    };
   };
 
   imports = [

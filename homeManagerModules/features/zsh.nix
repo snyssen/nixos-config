@@ -20,7 +20,6 @@
       ];
     };
 
-    home.file.".p10k.zsh".source = ../../files/home/p10k-config;
     initExtraBeforeCompInit = ''
       # p10k config
       source ~/.p10k.zsh
@@ -38,6 +37,9 @@
       }
     ];
   };
+
+  # Place p10k config file
+  home.file.".p10k.zsh".source = ../../files/home/p10k-config;
 
   # Install fonts for use in console
   home.packages = with pkgs;

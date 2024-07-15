@@ -7,7 +7,6 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      theme = "powerlevel10k/powerlevel10k";
       plugins = [
         "colored-man-pages"
         "colorize"
@@ -19,14 +18,12 @@
         "npm"
         "screen"
         "vscode"
-        "zsh-autosuggestions"
-        "zsh-syntax-highlighting"
       ];
     };
 
     initExtraBeforeCompInit = ''
       # p10k config
-      source p10k.zsh
+      source share/zsh-powerlevel10k/.p10k.zsh
     '';
 
     initExtra = ''
@@ -35,8 +32,6 @@
 
     plugins = with pkgs; [
       {
-        # A prompt will appear the first time to configure it properly
-        # make sure to select MesloLGS NF as the font in Konsole
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
@@ -44,7 +39,7 @@
       {
         name = "powerlevel10k-config";
         src = ../../files/home/p10k-config;
-        file = "p10k.zsh";
+        file = "share/zsh-powerlevel10k/.p10k.zsh";
       }
     ];
   };

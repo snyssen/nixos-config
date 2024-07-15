@@ -60,4 +60,11 @@
       }
     ];
   };
+
+  # Install fonts for use in console
+  home.packages = with pkgs;
+  [
+    miracode
+  ];
+  fonts.fontconfig.enable = true;
 }

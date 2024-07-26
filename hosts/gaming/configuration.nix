@@ -30,6 +30,7 @@ in
 
     bundles = {
       gnome.enable = true;
+      gaming.enable = true;
     };
 
     grub.enable = true;

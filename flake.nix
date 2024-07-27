@@ -33,7 +33,7 @@
       gaming = mkSystem "gaming";
     };
 
-    homeConfiguration = {
+    homeConfigurations = {
       "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix;
       "snyssen@gaming" = mkHome "x86_64-linux" .hosts/gaming/home.nix;
     };

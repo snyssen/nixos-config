@@ -1,4 +1,4 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 let
   cfg = config.myHomeManager.git;
 in
@@ -14,7 +14,7 @@ in
 
   programs.git = {
     enable = true;
-    userName  = cfg.username;
+    userName = cfg.username;
     userEmail = cfg.email;
   };
 }

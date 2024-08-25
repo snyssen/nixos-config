@@ -1,13 +1,12 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  outputs,
-  system,
-  myLib,
-  hm,
-  ...
+{ config
+, pkgs
+, lib
+, inputs
+, outputs
+, system
+, myLib
+, hm
+, ...
 }:
 let
   syncthingData = import ../../data/syncthing.nix;

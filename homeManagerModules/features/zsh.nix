@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -43,11 +43,13 @@
 
   # Install fonts for use in console
   home.packages = with pkgs;
-  [
-    (nerdfonts.override { fonts = [
-      "BigBlueTerminal"
-      "FiraCode"
-    ]; })
-  ];
+    [
+      (nerdfonts.override {
+        fonts = [
+          "BigBlueTerminal"
+          "FiraCode"
+        ];
+      })
+    ];
   fonts.fontconfig.enable = true;
 }

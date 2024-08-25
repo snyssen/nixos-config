@@ -1,4 +1,4 @@
-{lib, config, pkgs, inputs,...}:
+{ lib, config, pkgs, inputs, ... }:
 let
   cfg = config.myHomeManager.firefox;
 in

@@ -1,4 +1,4 @@
-{lib, config, ...}: 
+{ lib, config, ... }:
 let
   cfg = config.myNixOS.i18n;
 in
@@ -14,7 +14,7 @@ in
       default = "fr_BE.UTF-8";
     };
   };
-  
+
   time.timeZone = cfg.timezone;
 
   i18n.defaultLocale = cfg.defaultLocale;

@@ -1,4 +1,4 @@
-{lib, config, inputs, outputs, myLib, pkgs, ...}:
+{ lib, config, inputs, outputs, myLib, pkgs, ... }:
 let
   cfg = config.myNixOS.user;
 in

@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   programs.vscode = {
     enable = true;
     # TODO: find a way to propagate system architecture from flake.nix

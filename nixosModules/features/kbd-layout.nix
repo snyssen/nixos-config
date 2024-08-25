@@ -1,4 +1,4 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 let
   cfg = config.myNixOS.kbd-layout;
 in
@@ -11,7 +11,7 @@ in
       '';
     };
     additionalLayouts = lib.mkOption {
-      default = [];
+      default = [ ];
       description = ''
         Additional keybaord layouts to apply
       '';
@@ -19,7 +19,7 @@ in
   };
 
   # Configure keymap in X11
-  services.xserver = let layoutLst = [cfg.layout] ++ cfg.additionalLayouts; in {
+  services.xserver = let layoutLst = [ cfg.layout ] ++ cfg.additionalLayouts; in {
     # Concatenate as e.g. "fr,be,us"
     layout = lib.strings.concatStringsSep "," layoutLst;
     xkbVariant = "";

@@ -1,9 +1,9 @@
-{inputs, outputs, pkgs, lib, ...}: {
+{ inputs, outputs, pkgs, lib, ... }: {
   myHomeManager = {
     bundles = {
       dev.enable = true;
     };
-    
+
     dconf.enable = true;
   };
 

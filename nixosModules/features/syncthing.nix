@@ -1,4 +1,4 @@
-{lib, config, pkgs, ...}:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.myNixOS.syncthing;
 in
@@ -17,7 +17,7 @@ in
           };
         };
       });
-      default = {};
+      default = { };
     };
     folders = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule {
@@ -34,7 +34,7 @@ in
           };
         };
       });
-      default = {};
+      default = { };
     };
     gnomeExtension.enable = lib.mkEnableOption "installation of extension for systray";
   };

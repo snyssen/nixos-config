@@ -26,38 +26,39 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = {...}@inputs:
-  let
-    # Small library taken from https://github.com/vimjoyer/nixconf
-    # Helps with reducing boilerplate
-    myLib = import ./myLib/default.nix {inherit inputs;};
-  in
-  with myLib; {
-    devShells = builtins.listToAttrs (map (sys:
-      let pkgs = inputs.nixpkgs.legacyPackages.${sys}; in
-      {
-        name = sys;
-        value = {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              nixpkgs-fmt
-            ];
-          };
-        };
-      })
-      inputs.flake-utils.lib.defaultSystems);
-    
-    nixosConfigurations = {
-      virtualbox = mkSystem "virtualbox";
-      gaming = mkSystem "gaming";
-    };
+  outputs = { ... }@inputs:
+    let
+      # Small library taken from https://github.com/vimjoyer/nixconf
+      # Helps with reducing boilerplate
+      myLib = import ./myLib/default.nix { inherit inputs; };
+    in
+    with myLib; {
+      devShells = builtins.listToAttrs (map
+        (sys:
+          let pkgs = inputs.nixpkgs.legacyPackages.${sys}; in
+          {
+            name = sys;
+            value = {
+              default = pkgs.mkShell {
+                buildInputs = with pkgs; [
+                  nixpkgs-fmt
+                ];
+              };
+            };
+          })
+        inputs.flake-utils.lib.defaultSystems);
 
-    homeConfigurations = {
-      "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix;
-      "snyssen@gaming" = mkHome "x86_64-linux" .hosts/gaming/home.nix;
-    };
+      nixosConfigurations = {
+        virtualbox = mkSystem "virtualbox";
+        gaming = mkSystem "gaming";
+      };
 
-    homeManagerModules.default = ./homeManagerModules;
-    nixosModules.default = ./nixosModules;
-  };
+      homeConfigurations = {
+        "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix;
+        "snyssen@gaming" = mkHome "x86_64-linux" .hosts/gaming/home.nix;
+      };
+
+      homeManagerModules.default = ./homeManagerModules;
+      nixosModules.default = ./nixosModules;
+    };
 }

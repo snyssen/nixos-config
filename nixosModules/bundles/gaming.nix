@@ -1,4 +1,4 @@
-{lib, pkgs,...}: {
+{ lib, pkgs, ... }: {
   myNixOS = {
     steam.enable = true;
   };

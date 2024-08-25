@@ -11,7 +11,7 @@
   # TODO: move
   home.packages = with pkgs; [
     prismlauncher
-    gnome.dconf-editor
+    dconf-editor
     (retroarch.override {
       cores = with libretro; [
         pcsx2

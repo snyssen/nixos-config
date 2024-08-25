@@ -27,7 +27,7 @@ in
     pkgs.gnomeExtensions.syncthing-indicator
   ];
 
-  services.xserver.displayManager.autoLogin = lib.mkIf cfg.autoLogin.enable {
+  services.displayManager.autoLogin = lib.mkIf cfg.autoLogin.enable {
     enable = cfg.autoLogin.enable;
     user = cfg.autoLogin.user;
   };

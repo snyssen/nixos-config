@@ -46,8 +46,10 @@ in
     configDir = "/home/${cfg.username}/Documents/.config/syncthing";
     overrideDevices = true;
     overrideFolders = true;
-    devices = cfg.devices;
-    folders = cfg.folders;
+    settings = {
+      devices = cfg.devices;
+      folders = cfg.folders;
+    };
   };
 
   environment.systemPackages = lib.mkIf cfg.gnomeExtension.enable [

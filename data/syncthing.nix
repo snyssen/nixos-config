@@ -6,5 +6,8 @@
     "fedora-workstation" = {
       id = "R6CGGBH-U7FT5Z4-S5VAMC3-BPYZHTX-67F7ENV-FB234XB-MDH3HRW-EOJU2QP";
     };
+    "Pixel 8 Pro" = {
+      id = "DLXNSVV-GZGRYS7-JAZ5KLW-R3DSKMX-NHNUZYL-Y43OE6C-XC2ZNFN-5FEPQA4";
+    };
   };
 }

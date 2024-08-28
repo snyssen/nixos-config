@@ -18,7 +18,11 @@
         pcsx-rearmed
       ];
     })
-
+    sweethome3d.application
+    obsidian
+    librewolf
+    webcord-vencord
+    onlyoffice-bin
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

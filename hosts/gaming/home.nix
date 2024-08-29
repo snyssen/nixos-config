@@ -23,6 +23,7 @@
     librewolf
     webcord-vencord
     onlyoffice-bin
+    protonmail-desktop
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

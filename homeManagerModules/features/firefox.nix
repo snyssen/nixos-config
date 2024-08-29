@@ -11,14 +11,68 @@ in
 
   programs.firefox = {
     enable = true;
+    policies = {
+      AppAutoUpdate = false; # Disable automatic application update
+      BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.
+      DisableFirefoxStudies = true;
+      DisableFirefoxAccounts = true; # Disable Firefox Sync
+      DisableFirefoxScreenshots = true; # No screenshots?
+      DisableMasterPasswordCreation = true; # To be determined how to handle master password
+      DisableProfileImport = true; # Purity enforcement: Only allow nix-defined profiles
+      DisableProfileRefresh = true; # Disable the Refresh Firefox button on about:support and support.mozilla.org
+      DisableSetDesktopBackground = true; # Remove the “Set As Desktop Background…” menuitem when right clicking on an image, because Nix is the only thing that can manage the backgroud
+      DisplayMenuBar = "default-off";
+      DisplayBookmarksToolbar = "always";
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DisableFormHistory = true;
+      DisablePasswordReveal = true;
+      DontCheckDefaultBrowser = true;
+      OfferToSaveLogins = false;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+        EmailTracking = true;
+        # Exceptions = ["https://example.com"]
+      };
+      EncryptedMediaExtensions = {
+        Enabled = false;
+      };
+      ExtensionUpdate = false;
+      FirefoxHome = {
+        Search = false;
+        TopSites = false;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        SponsoredPocket = false;
+        Snippets = false;
+        Locked = true;
+      };
+      FirefoxSuggest = {
+        WebSuggestions = false;
+        SponsoredSuggestions = false;
+        ImproveSuggest = false;
+        Locked = true;
+      };
+      NoDefaultBookmarks = true;
+      PasswordManagerEnabled = false;
+    };
     profiles.${cfg.user} = {
-      # TODO: make firefox more private using settings
-      # TODO: add Floccus and TamperMonkey (and see if they can be configured declaratively)
-      # TODO: set dash.snyssen.be as home/start page + plugin for open on each new tab
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        bitwarden
+        proton-pass
         ublock-origin
+        floccus
+        new-tab-override
       ];
+      # from: https://github.com/Kreyren/nixos-config/blob/bd4765eb802a0371de7291980ce999ccff59d619/nixos/users/kreyren/home/modules/web-browsers/firefox/firefox.nix#L116-L148
+      # For info on possible settings: https://mozilla.github.io/policy-templates/
+      settings = {
+        "browser.startup.homepage" = "https://dash.snyssen.be";
+      };
+      search.default = "DuckDuckGo";
     };
   };
 }

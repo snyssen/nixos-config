@@ -14,7 +14,6 @@ in
 {
   imports =
     [
-      # TODO: Don't forget to change with the hardware-configuration built especially for the device !
       ./hardware-configuration.nix
       inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
     ];
@@ -34,7 +33,10 @@ in
       gaming.enable = true;
     };
 
-    grub.enable = true;
+    grub = {
+      enable = true;
+      timeout = 5;
+    };
     syncthing = {
       enable = true;
       username = "snyssen";

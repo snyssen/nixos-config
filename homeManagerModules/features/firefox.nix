@@ -73,6 +73,7 @@ in
         "browser.startup.homepage" = "https://dash.snyssen.be";
       };
       search.default = "DuckDuckGo";
+      search.force = true; # https://github.com/nix-community/home-manager/issues/3698
     };
   };
 }

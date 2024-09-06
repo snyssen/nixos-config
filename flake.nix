@@ -53,11 +53,6 @@
         gaming = mkSystem "gaming";
       };
 
-      homeConfigurations = {
-        "snyssen@virtualbox" = mkHome "x86_64-linux" .hosts/virtualbox/home.nix;
-        "snyssen@gaming" = mkHome "x86_64-linux" .hosts/gaming/home.nix;
-      };
-
       homeManagerModules.default = ./homeManagerModules;
       nixosModules.default = ./nixosModules;
     };

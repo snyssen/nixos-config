@@ -49,7 +49,6 @@
         inputs.flake-utils.lib.defaultSystems);
 
       nixosConfigurations = {
-        virtualbox = mkSystem "virtualbox";
         gaming = mkSystem "gaming";
       };
 

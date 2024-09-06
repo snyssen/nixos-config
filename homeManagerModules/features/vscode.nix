@@ -5,6 +5,7 @@
     extensions = with inputs.nix-vscode-extensions.extensions."x86_64-linux".vscode-marketplace; [
       # TODO: only add extensions that are actually needed for all projects
       # I would like to move onto devcontainers for all projects, with extensions specific for each project defined in the project
+      mkhl.direnv
       redhat.ansible
       astro-build.astro-vscode
       aaron-bond.better-comments

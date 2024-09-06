@@ -50,6 +50,7 @@
 
       nixosConfigurations = {
         gaming = mkSystem "gaming";
+        xps = mkSystem "xps";
       };
 
       homeManagerModules.default = ./homeManagerModules;

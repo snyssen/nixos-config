@@ -45,11 +45,11 @@ in
         };
         RetroArch = {
           path = "/home/snyssen/.config/retroarch";
-          devices = [ "sync.snyssen.be" "fedora-workstation" ];
+          devices = [ "sync.snyssen.be" "xps" ];
         };
         Notes = {
           path = "/home/snyssen/Notes";
-          devices = [ "sync.snyssen.be" "fedora-workstation" "Pixel 8 Pro" ];
+          devices = [ "sync.snyssen.be" "xps" "Pixel 8 Pro" ];
         };
       };
       gnomeExtension.enable = true;

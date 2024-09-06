@@ -38,20 +38,19 @@ in
     syncthing = {
       enable = true;
       username = "snyssen";
-      # TODO: update devices with this new one
       devices = syncthingData.devices;
       folders = {
         PrismLauncher = {
           path = "/home/snyssen/.local/share/PrismLauncher";
-          devices = [ "sync.snyssen.be" ];
+          devices = [ "sync.snyssen.be" "gaming" ];
         };
         RetroArch = {
           path = "/home/snyssen/.config/retroarch";
-          devices = [ "sync.snyssen.be" ];
+          devices = [ "sync.snyssen.be" "gaming" ];
         };
         Notes = {
           path = "/home/snyssen/Notes";
-          devices = [ "sync.snyssen.be" "Pixel 8 Pro" ];
+          devices = [ "sync.snyssen.be" "gaming" "Pixel 8 Pro" ];
         };
       };
       gnomeExtension.enable = true;

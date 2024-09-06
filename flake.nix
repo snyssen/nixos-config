@@ -19,7 +19,7 @@
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
     firefox-addons.inputs.flake-utils.follows = "flake-utils";
 
-    # hardware.url = "github:nixos/nixos-hardware";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!

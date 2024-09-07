@@ -11,6 +11,8 @@ in
 
   programs.firefox = {
     enable = true;
+    # from: https://github.com/Kreyren/nixos-config/blob/bd4765eb802a0371de7291980ce999ccff59d619/nixos/users/kreyren/home/modules/web-browsers/firefox/firefox.nix#L116-L148
+    # For info on possible settings: https://mozilla.github.io/policy-templates/
     policies = {
       AppAutoUpdate = false; # Disable automatic application update
       BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.
@@ -67,10 +69,9 @@ in
         floccus
         new-tab-override
       ];
-      # from: https://github.com/Kreyren/nixos-config/blob/bd4765eb802a0371de7291980ce999ccff59d619/nixos/users/kreyren/home/modules/web-browsers/firefox/firefox.nix#L116-L148
-      # For info on possible settings: https://mozilla.github.io/policy-templates/
       settings = {
         "browser.startup.homepage" = "https://dash.snyssen.be";
+        "widget.disable-swipe-tracker" = "true"; # Disable annoying swipe gesture to back and forward in history
       };
       search.default = "DuckDuckGo";
       search.force = true; # https://github.com/nix-community/home-manager/issues/3698

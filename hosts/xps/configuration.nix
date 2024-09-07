@@ -67,6 +67,6 @@ in
 
   programs.gamemode.enable = true;
 
-  system.name = "gaming";
+  system.name = "xps";
   system.stateVersion = "23.05";
 }

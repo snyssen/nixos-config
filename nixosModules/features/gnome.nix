@@ -22,10 +22,15 @@ in
   environment.systemPackages = with pkgs; [
     pkgs.gnomeExtensions.caffeine
     pkgs.gnomeExtensions.pop-shell
-    pkgs.gnomeExtensions.gsconnect
     pkgs.gnomeExtensions.dash-to-dock
     pkgs.gnomeExtensions.syncthing-indicator
   ];
+
+  # Enable KDE Connect for use with gsconnect
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
 
   services.displayManager.autoLogin = lib.mkIf cfg.autoLogin.enable {
     enable = cfg.autoLogin.enable;

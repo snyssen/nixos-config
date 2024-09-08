@@ -1,6 +1,7 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   programs.vscode = {
     enable = true;
+    package = pkgs.vscode.fhs;
     # TODO: find a way to propagate system architecture from flake.nix
     extensions = with inputs.nix-vscode-extensions.extensions."x86_64-linux".vscode-marketplace; [
       # TODO: only add extensions that are actually needed for all projects
@@ -39,8 +40,9 @@
       vscode-icons-team.vscode-icons
       ms-vscode-remote.remote-wsl
       redhat.vscode-yaml
-      ms-dotnettools.csharp
-      ms-dotnettools.csdevkit
+      # ms-dotnettools.vscode-dotnet-runtime
+      # ms-dotnettools.csharp
+      # ms-dotnettools.csdevkit
     ];
   };
 }

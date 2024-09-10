@@ -24,6 +24,7 @@
     webcord-vencord
     onlyoffice-bin
     protonmail-desktop
+    signal-desktop
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

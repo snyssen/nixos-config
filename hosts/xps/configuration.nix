@@ -63,6 +63,7 @@ in
     };
 
     docker.enable = true;
+    logitech.enable = true;
   };
 
   programs.gamemode.enable = true;

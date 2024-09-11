@@ -25,7 +25,7 @@
       yzhang.markdown-all-in-one
       davidanson.vscode-markdownlint
       unifiedjs.vscode-mdx
-      bbenoist.nix
+      jnoortheen.nix-ide
       christian-kohler.npm-intellisense
       yutengjing.open-in-external-app
       johnpapa.vscode-peacock

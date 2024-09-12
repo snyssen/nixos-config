@@ -16,6 +16,7 @@ in
     [
       ./hardware-configuration.nix
       inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+      inputs.stylix.nixosModules.stylix
     ];
 
   myNixOS = {
@@ -64,6 +65,25 @@ in
 
     docker.enable = true;
     logitech.enable = true;
+  };
+
+  # TODO: export
+  stylix = {
+    enable = true;
+    image = ../../files/wallpapers/retro_gaming.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    # polarity = "dark";
+
+    fonts = {
+      monospace = {
+        package = (pkgs.nerdfonts.override {
+          fonts = [
+            "BigBlueTerminal"
+          ];
+        });
+        name = "BigBlueTerminal";
+      };
+    };
   };
 
   programs.gamemode.enable = true;

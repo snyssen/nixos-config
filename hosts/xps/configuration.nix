@@ -81,7 +81,7 @@ in
             "BigBlueTerminal"
           ];
         });
-        name = "BigBlueTerminal";
+        name = "BigBlueTermPlus Nerd Font Mono";
       };
     };
   };

@@ -44,5 +44,11 @@
       # ms-dotnettools.csharp
       # ms-dotnettools.csdevkit
     ];
+    userSettings= {
+      "git.autofetch" = true;
+      "git.enableSmartCommit" = true;
+      "git.confirmSync" = false;
+      "editor.multiCursorModifier" = "ctrlCmd";
+    };
   };
 }

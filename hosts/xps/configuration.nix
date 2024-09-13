@@ -71,7 +71,7 @@ in
   stylix = {
     enable = true;
     image = ../../files/wallpapers/bear1.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-estuary.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
     # polarity = "dark";
 
     fonts = {

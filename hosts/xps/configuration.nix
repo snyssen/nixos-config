@@ -71,17 +71,17 @@ in
   stylix = {
     enable = true;
     image = ../../files/wallpapers/bear1.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-estuary.yaml";
     # polarity = "dark";
 
     fonts = {
       monospace = {
         package = (pkgs.nerdfonts.override {
           fonts = [
-            "BigBlueTerminal"
+            "FiraCode"
           ];
         });
-        name = "BigBlueTermPlus Nerd Font Mono";
+        name = "FiraCode Nerd Font Mono";
       };
     };
   };

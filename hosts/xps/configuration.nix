@@ -70,7 +70,7 @@ in
   # TODO: export
   stylix = {
     enable = true;
-    image = ../../files/wallpapers/retro_gaming.jpg;
+    image = ../../files/wallpapers/bear1.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
     # polarity = "dark";
 

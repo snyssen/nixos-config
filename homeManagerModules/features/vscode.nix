@@ -45,10 +45,21 @@
       # ms-dotnettools.csdevkit
     ];
     userSettings= {
-      "git.autofetch" = true;
+      "git.autofetch" = "all";
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
       "editor.multiCursorModifier" = "ctrlCmd";
     };
+    keybindings = [
+      # Browser-like tab navigation, smth that should be the default let's be honest...
+      {
+        "key" = "ctrl+tab";
+        "command" = "workbench.action.nextEditor";
+      }
+      {
+          "key" = "ctrl+shift+tab";
+          "command" = "workbench.action.previousEditor";
+      }
+    ];
   };
 }

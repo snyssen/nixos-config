@@ -65,6 +65,7 @@ in
 
     docker.enable = true;
     logitech.enable = true;
+    printing.enable = true;
   };
 
   # TODO: export

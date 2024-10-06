@@ -15,6 +15,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
+      inputs.stylix.nixosModules.stylix
     ];
 
   myNixOS = {
@@ -55,13 +56,31 @@ in
       gnomeExtension.enable = true;
     };
 
-    docker.enable = true;
+    logitech.enable = true;
   };
 
   # Fix for time changing between boot of Windows and Linux
   time.hardwareClockInLocalTime = true;
 
   programs.gamemode.enable = true;
+
+  stylix = {
+    enable = true;
+    image = ../../files/wallpapers/retro_gaming.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/mellow-purple.yaml";
+    # polarity = "dark";
+
+    fonts = {
+      monospace = {
+        package = (pkgs.nerdfonts.override {
+          fonts = [
+            "FiraCode"
+          ];
+        });
+        name = "FiraCode Nerd Font Mono";
+      };
+    };
+  };
 
   system.name = "gaming";
   system.stateVersion = "23.05";

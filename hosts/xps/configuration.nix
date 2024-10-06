@@ -68,7 +68,6 @@ in
     printing.enable = true;
   };
 
-  # TODO: export
   stylix = {
     enable = true;
     image = ../../files/wallpapers/bear1.jpg;

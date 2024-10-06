@@ -21,7 +21,7 @@
     sweethome3d.application
     obsidian
     librewolf
-    webcord-vencord
+    vesktop
     onlyoffice-bin
     protonmail-desktop
   ];

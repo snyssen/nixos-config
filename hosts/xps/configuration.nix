@@ -38,10 +38,6 @@ in
       enable = true;
       timeout = 5;
     };
-    nvidia = {
-      enable = true;
-      open = true;
-    };
     syncthing = {
       enable = true;
       username = "snyssen";

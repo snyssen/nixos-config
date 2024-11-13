@@ -82,7 +82,13 @@ in
     };
   };
 
-  programs.gamemode.enable = true;
+  environment = {
+    systemPackages = with pkgs; [ 
+      qemu
+      quickemu
+      # quickgui
+    ];
+  };
 
   system.name = "xps";
   system.stateVersion = "23.05";

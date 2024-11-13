@@ -20,10 +20,12 @@ in
   services.xserver.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    pkgs.gnomeExtensions.caffeine
-    pkgs.gnomeExtensions.pop-shell
-    pkgs.gnomeExtensions.dash-to-dock
-    pkgs.gnomeExtensions.syncthing-indicator
+    gnomeExtensions.caffeine
+    gnomeExtensions.pop-shell
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.syncthing-indicator
+
+    gnome-terminal
   ];
 
   # Enable KDE Connect for use with gsconnect

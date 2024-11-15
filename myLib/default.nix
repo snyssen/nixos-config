@@ -40,6 +40,11 @@ rec {
       ];
     };
 
+  mkAppVM = hostname: {
+    type = "app";
+    program = "${inputs.self.nixosConfigurations.${hostname}.config.system.build.vm}/bin/run-${hostname}-vm";
+  };
+
   # =========================== Helpers ============================ #
 
   filesIn = dir: (map (fname: dir + "/${fname}")

@@ -55,6 +55,11 @@
         xps = mkSystem "xps";
       };
 
+      apps."x86_64-linux" = {
+        vm-gaming = mkAppVM "gaming";
+        vm-xps = mkAppVM "xps";
+      };
+
       homeManagerModules.default = ./homeManagerModules;
       nixosModules.default = ./nixosModules;
     };

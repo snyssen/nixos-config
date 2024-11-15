@@ -40,7 +40,7 @@ rec {
       ];
     };
 
-  mkAppVM = hostname: {
+  mkVMFor = hostname: {
     type = "app";
     program = "${inputs.self.nixosConfigurations.${hostname}.config.system.build.vm}/bin/run-${hostname}-vm";
   };

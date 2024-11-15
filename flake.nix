@@ -51,8 +51,8 @@
       };
 
       apps.${sys} = {
-        vm-gaming = mkAppVM "gaming";
-        vm-xps = mkAppVM "xps";
+        vm-gaming = mkVMFor "gaming";
+        vm-xps = mkVMFor "xps";
       };
 
       homeManagerModules.default = ./homeManagerModules;

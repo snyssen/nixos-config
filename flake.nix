@@ -22,45 +22,41 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.inputs.home-manager.follows = "home-manager";
+    stylix.inputs.flake-utils.follows = "flake-utils";
+    stylix.inputs.systems.follows = "flake-utils";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { ... }@inputs:
+  outputs = { ... }@inputs: inputs.flake-utils.lib.eachDefaultSystemPassThrough (sys:
     let
       # Small library taken from https://github.com/vimjoyer/nixconf
       # Helps with reducing boilerplate
       myLib = import ./myLib/default.nix { inherit inputs; };
+      pkgsForSys = myLib.pkgsFor sys;
     in
-    with myLib; {
-      devShells = builtins.listToAttrs (map
-        (sys:
-          let pkgs = inputs.nixpkgs.legacyPackages.${sys}; in
-          {
-            name = sys;
-            value = {
-              default = pkgs.mkShell {
-                buildInputs = with pkgs; [
-                  nixpkgs-fmt
-                ];
-              };
-            };
-          })
-        inputs.flake-utils.lib.defaultSystems);
+    with myLib;
+    {
+      devShell.${sys} = pkgsForSys.mkShell {
+        buildInputs = with pkgsForSys; [ nixpkgs-fmt ];
+      };
 
       nixosConfigurations = {
         gaming = mkSystem "gaming";
         xps = mkSystem "xps";
       };
 
-      apps."x86_64-linux" = {
+      apps.${sys} = {
         vm-gaming = mkAppVM "gaming";
         vm-xps = mkAppVM "xps";
       };
 
       homeManagerModules.default = ./homeManagerModules;
       nixosModules.default = ./nixosModules;
-    };
+    }
+  );
 }

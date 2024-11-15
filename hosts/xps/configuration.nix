@@ -83,7 +83,7 @@ in
   };
 
   environment = {
-    systemPackages = with pkgs; [ 
+    systemPackages = with pkgs; [
       qemu
       quickemu
       # quickgui

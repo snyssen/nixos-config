@@ -44,7 +44,7 @@
       # ms-dotnettools.csharp
       # ms-dotnettools.csdevkit
     ];
-    userSettings= {
+    userSettings = {
       "git.autofetch" = "all";
       "git.enableSmartCommit" = true;
       "git.confirmSync" = false;
@@ -57,8 +57,8 @@
         "command" = "workbench.action.nextEditor";
       }
       {
-          "key" = "ctrl+shift+tab";
-          "command" = "workbench.action.previousEditor";
+        "key" = "ctrl+shift+tab";
+        "command" = "workbench.action.previousEditor";
       }
     ];
   };

@@ -44,12 +44,8 @@
   # Install fonts for use in console
   home.packages = with pkgs;
     [
-      (nerdfonts.override {
-        fonts = [
-          "BigBlueTerminal"
-          "FiraCode"
-        ];
-      })
+      nerd-fonts.bigblue-terminal
+      nerd-fonts.fira-code
     ];
   fonts.fontconfig.enable = true;
 }

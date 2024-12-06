@@ -12,12 +12,7 @@
   home.packages = with pkgs; [
     prismlauncher
     dconf-editor
-    (retroarch.override {
-      cores = with libretro; [
-        pcsx2
-        pcsx-rearmed
-      ];
-    })
+    retroarch-full
     sweethome3d.application
     obsidian
     librewolf

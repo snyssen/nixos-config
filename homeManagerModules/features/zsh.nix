@@ -40,12 +40,4 @@
 
   # Place p10k config file
   home.file.".p10k.zsh".source = ../../files/home/p10k-config;
-
-  # Install fonts for use in console
-  home.packages = with pkgs;
-    [
-      nerd-fonts.bigblue-terminal
-      nerd-fonts.fira-code
-    ];
-  fonts.fontconfig.enable = true;
 }

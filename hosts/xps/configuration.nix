@@ -12,6 +12,16 @@ let
   syncthingData = import ../../data/syncthing.nix;
 in
 {
+
+  #
+  ## WORKAROUNDS
+  #
+
+  # https://github.com/NixOS/nixpkgs/issues/353990
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+
+  #########################
+
   imports =
     [
       ./hardware-configuration.nix
@@ -72,8 +82,8 @@ in
 
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font Mono";
+        package = pkgs.nerd-fonts.fira-mono;
+        name = "FiraMono Nerd Font Mono";
       };
     };
   };

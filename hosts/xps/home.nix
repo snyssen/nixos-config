@@ -1,4 +1,15 @@
 { inputs, lib, config, pkgs, user, hostname, ... }: {
+
+  #
+  ## WORKAROUNDS
+  #
+
+  # prevent hibernation due to power issues with NVIDIA cards
+  dconf.settings."org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type = "nothing";
+  dconf.settings."org/gnome/settings-daemon/plugins/power".sleep-inactive-battery-type = "suspend";
+
+  #########################
+
   myHomeManager = {
     bundles = {
       dev.enable = true;

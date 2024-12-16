@@ -72,6 +72,7 @@ in
     docker.enable = true;
     logitech.enable = true;
     printing.enable = true;
+    node-exporter.enable = true;
   };
 
   stylix = {

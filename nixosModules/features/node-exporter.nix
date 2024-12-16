@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 let
   cfg = config.myNixOS.node-exporter;
 in

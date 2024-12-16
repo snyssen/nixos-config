@@ -14,6 +14,7 @@ in
   services.prometheus.exporters.node = {
     enable = true;
     port = cfg.port;
+    openFirewall = true;
     # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/nixos/modules/services/monitoring/prometheus/exporters.nix
     # enabledCollectors = [ "systemd" ];
     # /nix/store/zgsw0yx18v10xa58psanfabmg95nl2bb-node_exporter-1.8.1/bin/node_exporter  --help

@@ -5,7 +5,7 @@ in
 {
   options.myNixOS.node-exporter = {
     port = lib.mkOption {
-      default = 9000;
+      default = 9100;
       description = "Port under which node exporter metrics are available";
     };
   };

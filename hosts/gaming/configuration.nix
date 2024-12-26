@@ -54,6 +54,7 @@ in
         };
       };
       gnomeExtension.enable = true;
+      node-exporter.enable = true;
     };
 
     logitech.enable = true;

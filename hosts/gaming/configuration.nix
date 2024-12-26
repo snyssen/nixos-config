@@ -54,10 +54,10 @@ in
         };
       };
       gnomeExtension.enable = true;
-      node-exporter.enable = true;
     };
 
     logitech.enable = true;
+    node-exporter.enable = true;
   };
 
   # Fix for time changing between boot of Windows and Linux

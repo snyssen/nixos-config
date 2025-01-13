@@ -8,6 +8,7 @@
         pop-shell.extensionUuid
         dash-to-dock.extensionUuid
         syncthing-indicator.extensionUuid
+        gsconnect.extensionUuid
       ];
     };
     settings."org/gnome/desktop/interface" = {

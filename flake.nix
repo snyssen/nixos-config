@@ -42,7 +42,10 @@
     with myLib;
     {
       devShell.${sys} = pkgsForSys.mkShell {
-        buildInputs = with pkgsForSys; [ nixpkgs-fmt ];
+        buildInputs = with pkgsForSys; [
+          nixfmt
+          nixd
+        ];
       };
 
       nixosConfigurations = {
@@ -58,6 +61,8 @@
 
       homeManagerModules.default = ./homeManagerModules;
       nixosModules.default = ./nixosModules;
+
+      nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     }
   );
 }

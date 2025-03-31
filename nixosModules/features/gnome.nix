@@ -26,6 +26,7 @@ in
     gnomeExtensions.syncthing-indicator
 
     gnome-terminal
+    ulauncher
   ];
 
   # Enable KDE Connect for use with gsconnect

@@ -64,6 +64,11 @@
           "key" = "ctrl+shift+tab";
           "command" = "workbench.action.previousEditor";
         }
+        # Save all files
+        {
+          "key" = "ctrl+shift+s";
+          "command" = "workbench.action.files.saveFiles";
+        }
       ];
     };
   };

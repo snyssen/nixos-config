@@ -1,12 +1,8 @@
 { lib, config, pkgs, inputs, ... }:
-let
-  cfg = config.myHomeManager.firefox;
-in
-{
+let cfg = config.myHomeManager.firefox;
+in {
   options.myHomeManager.firefox = {
-    user = lib.mkOption {
-      default = "snyssen";
-    };
+    user = lib.mkOption { default = "snyssen"; };
   };
 
   programs.firefox = {
@@ -15,14 +11,19 @@ in
     # For info on possible settings: https://mozilla.github.io/policy-templates/
     policies = {
       AppAutoUpdate = false; # Disable automatic application update
-      BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.
+      BackgroundAppUpdate =
+        false; # Disable automatic application update in the background, when the application is not running.
       DisableFirefoxStudies = true;
       DisableFirefoxAccounts = true; # Disable Firefox Sync
       DisableFirefoxScreenshots = true; # No screenshots?
-      DisableMasterPasswordCreation = true; # To be determined how to handle master password
-      DisableProfileImport = true; # Purity enforcement: Only allow nix-defined profiles
-      DisableProfileRefresh = true; # Disable the Refresh Firefox button on about:support and support.mozilla.org
-      DisableSetDesktopBackground = true; # Remove the “Set As Desktop Background…” menuitem when right clicking on an image, because Nix is the only thing that can manage the backgroud
+      DisableMasterPasswordCreation =
+        true; # To be determined how to handle master password
+      DisableProfileImport =
+        true; # Purity enforcement: Only allow nix-defined profiles
+      DisableProfileRefresh =
+        true; # Disable the Refresh Firefox button on about:support and support.mozilla.org
+      DisableSetDesktopBackground =
+        true; # Remove the “Set As Desktop Background…” menuitem when right clicking on an image, because Nix is the only thing that can manage the backgroud
       DisplayMenuBar = "default-off";
       DisplayBookmarksToolbar = "always";
       DisablePocket = true;
@@ -39,9 +40,7 @@ in
         EmailTracking = true;
         # Exceptions = ["https://example.com"]
       };
-      EncryptedMediaExtensions = {
-        Enabled = false;
-      };
+      EncryptedMediaExtensions = { Enabled = false; };
       ExtensionUpdate = false;
       FirefoxHome = {
         Search = false;
@@ -63,18 +62,28 @@ in
       PasswordManagerEnabled = false;
     };
     profiles.${cfg.user} = {
-      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-        proton-pass
-        ublock-origin
-        floccus
-        new-tab-override
-      ];
+      extensions.packages =
+        with inputs.firefox-addons.packages."x86_64-linux"; [
+          proton-pass
+          ublock-origin
+          floccus
+          new-tab-override
+        ];
       settings = {
         "browser.startup.homepage" = "https://dash.snyssen.be";
-        "widget.disable-swipe-tracker" = "true"; # Disable annoying swipe gesture to back and forward in history
+        "widget.disable-swipe-tracker" =
+          "true"; # Disable annoying swipe gesture to back and forward in history
       };
-      search.default = "DuckDuckGo";
-      search.force = true; # https://github.com/nix-community/home-manager/issues/3698
+      search.engines = {
+        "Kagi" = {
+          urls = [{ template = "https://kagi.com/search?q={searchTerms}"; }];
+          icon = "https://kagi.com/asset/de5eec9/favicon-16x16.png";
+        };
+      };
+      search.default = "Kagi";
+      search.force =
+        true; # https://github.com/nix-community/home-manager/issues/3698
     };
   };
+  stylix.targets.firefox.profileNames = [ "${cfg.user}" ];
 }

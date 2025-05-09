@@ -63,7 +63,7 @@ in {
     };
     profiles.${cfg.user} = {
       extensions.packages =
-        with inputs.firefox-addons.packages."x86_64-linux"; [
+        with inputs.firefox-addons.packages."${pkgs.system}"; [
           proton-pass
           ublock-origin
           floccus

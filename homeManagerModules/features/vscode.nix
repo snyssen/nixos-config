@@ -56,6 +56,7 @@
             redhat.vscode-commons
             redhat.ansible
             redhat.vscode-yaml
+            ms-azuretools.vscode-containers
           ] ++ defaultExtensions;
         userSettings = defaultUserSettings;
         keybindings = defaultKeybindings;

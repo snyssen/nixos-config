@@ -4,10 +4,8 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
 
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,42 +25,36 @@
     stylix.inputs.flake-utils.follows = "flake-utils";
     stylix.inputs.systems.follows = "flake-utils";
 
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { ... }@inputs: inputs.flake-utils.lib.eachDefaultSystemPassThrough (sys:
-    let
-      # Small library taken from https://github.com/vimjoyer/nixconf
-      # Helps with reducing boilerplate
-      myLib = import ./myLib/default.nix { inherit inputs; };
-      pkgsForSys = myLib.pkgsFor sys;
-    in
-    with myLib;
-    {
-      devShell.${sys} = pkgsForSys.mkShell {
-        buildInputs = with pkgsForSys; [
-          nixfmt
-          nixd
-        ];
-      };
+  outputs = { ... }@inputs:
+    inputs.flake-utils.lib.eachDefaultSystemPassThrough (sys:
+      let
+        # Small library taken from https://github.com/vimjoyer/nixconf
+        # Helps with reducing boilerplate
+        myLib = import ./myLib/default.nix { inherit inputs; };
+        pkgsForSys = myLib.pkgsFor sys;
+      in with myLib; {
+        devShell.${sys} = pkgsForSys.mkShell {
+          buildInputs = with pkgsForSys; [ nixfmt nixd ];
+        };
 
-      nixosConfigurations = {
-        gaming = mkSystem "gaming";
-        xps = mkSystem "xps";
-      };
+        nixosConfigurations = {
+          gaming = mkSystem "gaming";
+          xps = mkSystem "xps";
+        };
 
-      # Run with `nix run .#<app-name>`, e.g. `nix run .#vm-xps`
-      apps.${sys} = {
-        vm-gaming = mkVMFor "gaming";
-        vm-xps = mkVMFor "xps";
-      };
+        # Run with `nix run .#<app-name>`, e.g. `nix run .#vm-xps`
+        apps.${sys} = {
+          vm-gaming = mkVMFor "gaming";
+          vm-xps = mkVMFor "xps";
+        };
 
-      homeManagerModules.default = ./homeManagerModules;
-      nixosModules.default = ./nixosModules;
+        homeManagerModules.default = ./homeManagerModules;
+        nixosModules.default = ./nixosModules;
 
-      nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    }
-  );
+        nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      });
 }

@@ -1,22 +1,20 @@
-{ config
-, pkgs
-, lib
-, inputs
-, outputs
-, system
-, myLib
-, hm
-, ...
-}:
-let
-  syncthingData = import ../../data/syncthing.nix;
-in
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.stylix.nixosModules.stylix
-    ];
+{ config, pkgs, lib, inputs, outputs, system, myLib, hm, ... }:
+let syncthingData = import ../../data/syncthing.nix;
+in {
+  imports = [
+    ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    inputs.stylix.nixosModules.stylix
+    ./disk-config.nix
+    { disko.devices.disk.disk1.device = "/dev/nvme1n1"; }
+  ];
+
+  # TODO: disable, this is only for testing
+  services.openssh.enable = true;
+  users.users.snyssen.openssh.authorizedKeys.keys = [
+    # change this to your ssh key
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmidzOIAxpxW9nEFu+z6vW2ya2aH3CFIq8npZzJ/QZBVVHNb/gRQsT/ISluV3n/c7fg+4ZgUnkUUHIg/jgcpXqlYFzNnefXgoNyUJIMzOqyAYvxBcCx0Yye/KYwJ/MvLci8gSdWuYCh7Xnzp2WGAiNJD9MOWled/gsFwI/FDbI0w56/2UUEXFHmh0xbtnK4t806A6L+8e43Z9rLMO2EHE35rbm03HJZMHRluFzvr0HaNueKkkDQGJj27w1Tbhqr3w08GeXbj4FFCWQ40Te9cvaSLDacVk12LkCKUNSYuXBVOcJ/kEvGRJB8TATIcbOYQyuOqaDnlKV2aHwHuNyzBGtuaBoIq2JSio/q3NC8OfUpGzdb99dU62S2ntdywgcPB9G48BMLcNNMcY0xX6pY4Bm1fjRa3B0Fx04SMgxMc+RknMdQVC6Eiuop+i9GKs54RHoke/L/qfvNOz1QHtJShEQDGT/9E8WHmmPX0l+ZJ2Qd2LCGD54bJy2dj2BpMTu4X0= snyssen@nixos"
+  ];
 
   myNixOS = {
     user = {

@@ -6,7 +6,7 @@ in {
     inputs.disko.nixosModules.disko
     inputs.stylix.nixosModules.stylix
     ./disk-config.nix
-    { disko.devices.disk.disk1.device = "/dev/nvme1n1"; }
+    { disko.devices.disk.main.device = "/dev/nvme1n1"; }
   ];
 
   # TODO: disable, this is only for testing

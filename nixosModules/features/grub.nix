@@ -1,8 +1,6 @@
 { lib, config, ... }:
-let
-  cfg = config.myNixOS.grub;
-in
-{
+let cfg = config.myNixOS.grub;
+in {
 
   options.myNixOS.grub = {
     timeout = lib.mkOption {
@@ -15,12 +13,13 @@ in
 
   boot.loader = {
     timeout = cfg.timeout;
-    efi.canTouchEfiVariables = true;
+    # efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
       device = "nodev";
-      useOSProber = true;
+      # useOSProber = true;
       efiSupport = true;
+      efiInstallAsRemovable = true;
     };
   };
 }

@@ -45,3 +45,11 @@ nix shell nixpkgs#git-crypt --command git-crypt unlock
 ```sh
 sudo nixos-rebuild switch --flake .#gaming
 ```
+
+## [WIP] Deployment with [nixos-anywhere](https://nix-community.github.io/nixos-anywhere/quickstart.html)
+
+```sh
+echo "my-super-safe-password" > /tmp/secret.key
+
+nix run github:nix-community/nixos-anywhere -- --flake .#gaming --target-host snyssen@192.168.1.108 --generate-hardware-config nixos-generate-config ./hosts/gaming/hardware-configuration.nix --disk-encryption-keys /tmp/secret.key /tmp/secret.key
+```

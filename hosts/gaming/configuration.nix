@@ -2,11 +2,10 @@
 let syncthingData = import ../../data/syncthing.nix;
 in {
   imports = [
-    ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
-    inputs.stylix.nixosModules.stylix
     ./disk-config.nix
-    { disko.devices.disk.main.device = "/dev/nvme1n1"; }
+    ./hardware-configuration.nix
+    inputs.stylix.nixosModules.stylix
   ];
 
   # TODO: disable, this is only for testing
@@ -19,7 +18,7 @@ in {
   myNixOS = {
     #* WIP: GPU passthrough
     gpu-passthrough = {
-      enable = true;
+      enable = false;
       vfioIds = [
         "10de:1e82" # RTX2080 VGA
         "10de:10f8" # RTX2080 Audio

@@ -9,7 +9,7 @@
         jnoortheen.nix-ide
         aaron-bond.better-comments
         streetsidesoftware.code-spell-checker
-        eamodio.gitlens
+        mk12.better-git-line-blame
         mhutchie.git-graph
         oderwat.indent-rainbow
         yzhang.markdown-all-in-one

@@ -56,6 +56,9 @@ in {
 
     logitech.enable = true;
     node-exporter.enable = true;
+
+    #* WIP: GPU passthrough
+    gpu-passthrough = { enable = true; };
   };
 
   # Fix for time changing between boot of Windows and Linux

@@ -17,6 +17,15 @@ in {
   ];
 
   myNixOS = {
+    #* WIP: GPU passthrough
+    gpu-passthrough = {
+      enable = true;
+      vfioIds = [
+        "10de:1e82" # RTX2080 VGA
+        "10de:10f8" # RTX2080 Audio
+      ];
+    };
+
     user = {
       enable = true;
       home-manager = {
@@ -56,9 +65,6 @@ in {
 
     logitech.enable = true;
     node-exporter.enable = true;
-
-    #* WIP: GPU passthrough
-    gpu-passthrough = { enable = true; };
   };
 
   # Fix for time changing between boot of Windows and Linux

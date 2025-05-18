@@ -9,6 +9,15 @@ in {
       '';
     };
     user = lib.mkOption { default = "snyssen"; };
+    vfioIds = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = ''
+        List of VFIO IDs to isolate for GPU passthrough.
+        See:
+          - https://kilo.bytesize.xyz/gpu-passthrough-on-nixos
+          - https://astrid.tech/2022/09/22/0/nixos-gpu-vfio/
+      '';
+    };
   };
 
   # Configure kernel options to make sure IOMMU & KVM support is on.
@@ -25,8 +34,8 @@ in {
       "${cfg.platform}_iommu=pt"
       "kvm.ignore_msrs=1"
     ];
-    # TODO: enable
-    # extraModprobeConfig = "options vfio-pci ids=${builtins.concatStringsSep "," vfioIds}";
+    extraModprobeConfig =
+      "options vfio-pci ids=${builtins.concatStringsSep "," cfg.vfioIds}";
   };
 
   # Add a file for looking-glass to use later. This will allow for viewing the guest VM's screen in a

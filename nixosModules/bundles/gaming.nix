@@ -1,9 +1,5 @@
 { lib, pkgs, ... }: {
-  myNixOS = {
-    steam.enable = true;
-  };
+  myNixOS = { steam.enable = true; };
 
-  environment.systemPackages = with pkgs; [
-    bottles
-  ];
+  environment.systemPackages = with pkgs; [ lutris ];
 }

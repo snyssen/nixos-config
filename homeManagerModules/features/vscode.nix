@@ -75,4 +75,6 @@
       };
     };
   };
+
+  stylix.targets.vscode.profileNames = [ "default" "ansible" "astro" ];
 }

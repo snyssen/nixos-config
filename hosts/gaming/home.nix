@@ -33,6 +33,7 @@
     onlyoffice-bin
     protonmail-desktop
     ghostty
+    caligula
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

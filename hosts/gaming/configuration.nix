@@ -73,8 +73,8 @@ in {
 
   stylix = {
     enable = true;
-    image = ../../files/wallpapers/retro_gaming.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/mellow-purple.yaml";
+    image = ../../files/wallpapers/Elite_wallpaper_4k_8.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
     # polarity = "dark";
 
     fonts = {

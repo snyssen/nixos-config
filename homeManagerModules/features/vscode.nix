@@ -57,6 +57,9 @@
             redhat.ansible
             redhat.vscode-yaml
             ms-azuretools.vscode-containers
+            grafana.grafana-alloy
+            timonwong.shellcheck
+            bmalehorn.shell-syntax
           ] ++ defaultExtensions;
         userSettings = defaultUserSettings;
         keybindings = defaultKeybindings;

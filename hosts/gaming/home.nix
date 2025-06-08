@@ -34,6 +34,7 @@
     protonmail-desktop
     ghostty
     caligula
+    rpi-imager
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

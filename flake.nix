@@ -15,14 +15,12 @@
 
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
-    firefox-addons.inputs.flake-utils.follows = "flake-utils";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.home-manager.follows = "home-manager";
-    stylix.inputs.flake-utils.follows = "flake-utils";
     stylix.inputs.systems.follows = "flake-utils";
 
     disko.url = "github:nix-community/disko";

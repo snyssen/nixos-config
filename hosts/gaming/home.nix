@@ -35,6 +35,9 @@
     ghostty
     caligula
     rpi-imager
+    zenity
+    protontricks
+    p7zip
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

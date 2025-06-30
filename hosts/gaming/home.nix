@@ -38,6 +38,7 @@
     zenity
     protontricks
     p7zip
+    signal-desktop
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

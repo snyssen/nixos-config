@@ -1,14 +1,10 @@
 { pkgs, lib, config, ... }:
-let
-  cfg = config.myNixOS.gnome;
-in
-{
+let cfg = config.myNixOS.gnome;
+in {
   options.myNixOS.gnome = {
     autoLogin = {
       enable = lib.mkEnableOption "autoLogin feature";
-      user = lib.mkOption {
-        default = "snyssen";
-      };
+      user = lib.mkOption { default = "snyssen"; };
     };
   };
 
@@ -24,6 +20,7 @@ in
     gnomeExtensions.pop-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.syncthing-indicator
+    gnomeExtensions.appindicator
 
     gnome-terminal
     ulauncher

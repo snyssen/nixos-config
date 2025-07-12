@@ -1,17 +1,6 @@
-{ config
-, pkgs
-, lib
-, inputs
-, outputs
-, system
-, myLib
-, hm
-, ...
-}:
-let
-  syncthingData = import ../../data/syncthing.nix;
-in
-{
+{ config, pkgs, lib, inputs, outputs, system, myLib, hm, ... }:
+let syncthingData = import ../../data/syncthing.nix;
+in {
 
   #
   ## WORKAROUNDS
@@ -22,12 +11,11 @@ in
 
   #########################
 
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
-      inputs.stylix.nixosModules.stylix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
+    inputs.stylix.nixosModules.stylix
+  ];
 
   myNixOS = {
     user = {
@@ -73,6 +61,7 @@ in
     logitech.enable = true;
     printing.enable = true;
     node-exporter.enable = true;
+    tailscale.enable = true;
   };
 
   stylix = {

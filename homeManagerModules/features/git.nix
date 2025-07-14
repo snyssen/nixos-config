@@ -16,6 +16,7 @@ in {
       commit.gpgsign = true;
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/${cfg.signingKeyFilename}";
+      pull.rebase = true;
     };
   };
 }

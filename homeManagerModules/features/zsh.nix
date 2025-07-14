@@ -1,4 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, lib, config, ... }:
+let cfg = config.myHomeManager.zsh;
+in {
+  options.myHomeManager.zsh = {
+    atuin.enable = lib.mkEnableOption "enable atuin history manager";
+  };
+
+  home.packages = lib.mkIf cfg.atuin.enable [ pkgs.atuin ];
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -20,22 +28,25 @@
       ];
     };
 
-    initExtraBeforeCompInit = ''
-      # p10k config
-      source ~/.p10k.zsh
-    '';
+    # orders from https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.initContent
+    initContent = let
+      p10kConfig = lib.mkOrder 500 ''
+        # p10k config
+        source ~/.p10k.zsh
+      '';
+      envVars = lib.mkOrder 1000 ''
+        EDITOR="code --wait"
+      '';
+      atuin = lib.mkOrder 1500 ''
+        eval "$(atuin init zsh)"
+      '';
+    in lib.mkMerge [ p10kConfig envVars (lib.mkIf cfg.atuin.enable atuin) ];
 
-    initExtra = ''
-      EDITOR="code --wait"
-    '';
-
-    plugins = with pkgs; [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-    ];
+    plugins = [{
+      name = "powerlevel10k";
+      src = pkgs.zsh-powerlevel10k;
+      file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    }];
   };
 
   # Place p10k config file

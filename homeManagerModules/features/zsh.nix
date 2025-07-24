@@ -3,9 +3,15 @@ let cfg = config.myHomeManager.zsh;
 in {
   options.myHomeManager.zsh = {
     atuin.enable = lib.mkEnableOption "enable atuin history manager";
+    fzf.enable = lib.mkEnableOption "enable fzf history manager";
   };
 
   home.packages = lib.mkIf cfg.atuin.enable [ pkgs.atuin ];
+
+  programs.fzf = lib.mkIf cfg.fzf.enable {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh = {
     enable = true;

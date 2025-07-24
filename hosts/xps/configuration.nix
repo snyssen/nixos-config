@@ -68,7 +68,7 @@ in {
     enable = true;
     image = ../../files/wallpapers/bear1.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
-    # polarity = "dark";
+    polarity = "dark";
 
     fonts = {
       monospace = {

@@ -1,6 +1,18 @@
-{ config, pkgs, lib, inputs, outputs, system, myLib, hm, ... }:
-let syncthingData = import ../../data/syncthing.nix;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  system,
+  myLib,
+  hm,
+  ...
+}:
+let
+  syncthingData = import ../../data/syncthing.nix;
+in
+{
   imports = [
     inputs.disko.nixosModules.disko
     ./disk-config.nix
@@ -48,11 +60,18 @@ in {
         };
         RetroArch = {
           path = "/home/snyssen/.config/retroarch";
-          devices = [ "sync.snyssen.be" "xps" ];
+          devices = [
+            "sync.snyssen.be"
+            "xps"
+          ];
         };
         Notes = {
           path = "/home/snyssen/Notes";
-          devices = [ "sync.snyssen.be" "xps" "Pixel 8 Pro" ];
+          devices = [
+            "sync.snyssen.be"
+            "xps"
+            "Pixel 8 Pro"
+          ];
         };
       };
       gnomeExtension.enable = true;
@@ -72,7 +91,7 @@ in {
     enable = true;
     image = ../../files/wallpapers/Elite_wallpaper_4k_8.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
-    # polarity = "dark";
+    polarity = "dark";
 
     fonts = {
       monospace = {

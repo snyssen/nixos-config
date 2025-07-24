@@ -60,6 +60,7 @@ in {
 
     logitech.enable = true;
     node-exporter.enable = true;
+    docker.enable = true;
   };
 
   # Fix for time changing between boot of Windows and Linux

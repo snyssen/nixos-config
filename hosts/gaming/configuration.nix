@@ -74,7 +74,6 @@ in
           ];
         };
       };
-      gnomeExtension.enable = true;
     };
 
     logitech.enable = true;

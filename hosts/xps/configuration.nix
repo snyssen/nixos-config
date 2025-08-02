@@ -1,6 +1,18 @@
-{ config, pkgs, lib, inputs, outputs, system, myLib, hm, ... }:
-let syncthingData = import ../../data/syncthing.nix;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  system,
+  myLib,
+  hm,
+  ...
+}:
+let
+  syncthingData = import ../../data/syncthing.nix;
+in
+{
 
   #
   ## WORKAROUNDS
@@ -43,18 +55,27 @@ in {
       folders = {
         PrismLauncher = {
           path = "/home/snyssen/.local/share/PrismLauncher";
-          devices = [ "sync.snyssen.be" "gaming" ];
+          devices = [
+            "sync.snyssen.be"
+            "gaming"
+          ];
         };
         RetroArch = {
           path = "/home/snyssen/.config/retroarch";
-          devices = [ "sync.snyssen.be" "gaming" ];
+          devices = [
+            "sync.snyssen.be"
+            "gaming"
+          ];
         };
         Notes = {
           path = "/home/snyssen/Notes";
-          devices = [ "sync.snyssen.be" "gaming" "Pixel 8 Pro" ];
+          devices = [
+            "sync.snyssen.be"
+            "gaming"
+            "Pixel 8 Pro"
+          ];
         };
       };
-      gnomeExtension.enable = true;
     };
 
     docker.enable = true;

@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   cfg = config.myNixOS.syncthing;
 in
@@ -9,34 +14,37 @@ in
       type = lib.types.str;
     };
     devices = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
-        options = {
-          id = lib.mkOption {
-            type = lib.types.str;
-            example = "XXX-XXX-XXX";
+      type = lib.types.attrsOf (
+        lib.types.submodule {
+          options = {
+            id = lib.mkOption {
+              type = lib.types.str;
+              example = "XXX-XXX-XXX";
+            };
           };
-        };
-      });
+        }
+      );
       default = { };
     };
     folders = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
-        options = {
-          path = lib.mkOption {
-            type = lib.types.str;
-            example = "/mnt/folder-to-sync";
+      type = lib.types.attrsOf (
+        lib.types.submodule {
+          options = {
+            path = lib.mkOption {
+              type = lib.types.str;
+              example = "/mnt/folder-to-sync";
+            };
+            devices = lib.mkOption {
+              type = lib.types.listOf lib.types.str;
+              example = ''
+                [ "device-one", "device-two" ]
+              '';
+            };
           };
-          devices = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            example = ''
-              [ "device-one", "device-two" ]
-            '';
-          };
-        };
-      });
+        }
+      );
       default = { };
     };
-    gnomeExtension.enable = lib.mkEnableOption "installation of extension for systray";
   };
 
   services.syncthing = {
@@ -51,8 +59,4 @@ in
       folders = cfg.folders;
     };
   };
-
-  environment.systemPackages = lib.mkIf cfg.gnomeExtension.enable [
-    pkgs.gnomeExtensions.syncthing-indicator
-  ];
 }

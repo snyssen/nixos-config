@@ -1,6 +1,13 @@
-{ pkgs, lib, config, ... }:
-let cfg = config.myNixOS.gnome;
-in {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.myNixOS.gnome;
+in
+{
   options.myNixOS.gnome = {
     autoLogin = {
       enable = lib.mkEnableOption "autoLogin feature";
@@ -16,7 +23,6 @@ in {
     gnomeExtensions.caffeine
     gnomeExtensions.pop-shell
     gnomeExtensions.dash-to-dock
-    gnomeExtensions.syncthing-indicator
     gnomeExtensions.appindicator
 
     gnome-terminal

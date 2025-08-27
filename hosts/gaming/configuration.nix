@@ -82,6 +82,11 @@ in
     tailscale.enable = true;
   };
 
+  environment.systemPackages = [
+    pkgs.smartmontools
+    pkgs.tmux
+  ];
+
   # Fix for time changing between boot of Windows and Linux
   time.hardwareClockInLocalTime = true;
 

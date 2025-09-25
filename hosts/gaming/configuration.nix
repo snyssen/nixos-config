@@ -13,6 +13,17 @@ let
   syncthingData = import ../../data/syncthing.nix;
 in
 {
+
+  #
+  ## WORKAROUNDS
+  #
+
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "libsoup-2.74.3"
+  # ];
+
+  #########################
+
   imports = [
     inputs.disko.nixosModules.disko
     ./disk-config.nix

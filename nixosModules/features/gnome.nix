@@ -26,7 +26,6 @@ in
     gnomeExtensions.appindicator
 
     gnome-terminal
-    ulauncher
   ];
 
   # Enable KDE Connect for use with gsconnect

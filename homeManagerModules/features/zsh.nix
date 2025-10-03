@@ -4,6 +4,7 @@ in {
   options.myHomeManager.zsh = {
     atuin.enable = lib.mkEnableOption "enable atuin history manager";
     fzf.enable = lib.mkEnableOption "enable fzf history manager";
+    intelli-shell.enable = lib.mkEnableOption "Enable intelli-shell";
   };
 
   home.packages = lib.mkIf cfg.atuin.enable [ pkgs.atuin ];
@@ -11,6 +12,13 @@ in {
   programs.fzf = lib.mkIf cfg.fzf.enable {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.intelli-shell = lib.mkIf cfg.intelli-shell.enable {
+    enable = true;
+    enableZshIntegration = true;
+    # settings = {};
+    # shellHotkeys = {};
   };
 
   programs.zsh = {

@@ -1,19 +1,28 @@
-{ inputs, lib, config, pkgs, user, hostname, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  user,
+  hostname,
+  ...
+}:
+{
 
   #
   ## WORKAROUNDS
   #
 
   # prevent hibernation due to power issues with NVIDIA cards
-  dconf.settings."org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type =
-    "nothing";
-  dconf.settings."org/gnome/settings-daemon/plugins/power".sleep-inactive-battery-type =
-    "suspend";
+  dconf.settings."org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type = "nothing";
+  dconf.settings."org/gnome/settings-daemon/plugins/power".sleep-inactive-battery-type = "suspend";
 
   #########################
 
   myHomeManager = {
-    bundles = { dev.enable = true; };
+    bundles = {
+      dev.enable = true;
+    };
 
     dconf.enable = true;
     firefox.enable = true;
@@ -37,6 +46,7 @@
     protonvpn-gui
     ghostty
     annotator
+    element-desktop
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

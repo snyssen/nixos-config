@@ -116,6 +116,11 @@ in
     };
   };
 
+  # Temporary workaround for accessing server from tailscale
+  # networking.hosts = {
+  #   "100.114.242.89" = ["snyssen.be" "dash.snyssen.be" "monitor.snyssen.be"];
+  # };
+
   system.name = "xps";
   system.stateVersion = "23.05";
 }

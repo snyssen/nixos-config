@@ -96,6 +96,7 @@ in
   environment.systemPackages = [
     pkgs.smartmontools
     pkgs.tmux
+    pkgs.htop
   ];
 
   # Fix for time changing between boot of Windows and Linux

@@ -47,7 +47,6 @@
     protontricks
     p7zip
     signal-desktop
-    rustdesk
     fluffychat
     telegram-desktop
   ];

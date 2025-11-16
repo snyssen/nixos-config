@@ -20,6 +20,7 @@
           johnpapa.vscode-peacock
           gruntfuggly.todo-tree
           vscode-icons-team.vscode-icons
+          skellock.just
         ];
         defaultUserSettings = {
           "git.autofetch" = "all";

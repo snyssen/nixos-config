@@ -1,0 +1,39 @@
+{
+  pkgs,
+  ...
+}:
+{
+
+  #
+  ## WORKAROUNDS
+  #
+
+  #########################
+
+  myHomeManager = {
+    bundles = {
+      dev.enable = true;
+    };
+
+    dconf.enable = true;
+    firefox.enable = true;
+  };
+
+  # TODO: move
+  home.packages = with pkgs; [
+    sweethome3d.application
+    obsidian
+    librewolf
+    vesktop
+    onlyoffice-bin
+    protonmail-desktop
+    picard
+    vlc
+    ghostty
+    annotator
+    element-desktop
+  ];
+
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  home.stateVersion = "23.05";
+}

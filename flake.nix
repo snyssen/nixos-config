@@ -61,12 +61,14 @@
 
         nixosConfigurations = {
           gaming = mkSystem "gaming";
+          sninful = mkSystem "sninful";
           xps = mkSystem "xps";
         };
 
         # Run with `nix run .#<app-name>`, e.g. `nix run .#vm-xps`
         apps.${sys} = {
           vm-gaming = mkVMFor "gaming";
+          vm-sninful = mkVMFor "sninful";
           vm-xps = mkVMFor "xps";
         };
 

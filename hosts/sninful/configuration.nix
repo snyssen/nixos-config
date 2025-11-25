@@ -1,0 +1,91 @@
+{
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  syncthingData = import ../../data/syncthing.nix;
+in
+{
+
+  #
+  ## WORKAROUNDS
+  #
+
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "libsoup-2.74.3"
+  # ];
+
+  #########################
+
+  imports = [
+    inputs.disko.nixosModules.disko
+    ./disk-config.nix
+    ./hardware-configuration.nix
+    inputs.stylix.nixosModules.stylix
+  ];
+
+  myNixOS = {
+    user = {
+      enable = true;
+      home-manager = {
+        enable = true;
+        config = ./home.nix;
+      };
+      zsh.enable = true;
+    };
+
+    bundles = {
+      gnome.enable = true;
+      gaming.enable = true;
+    };
+
+    grub = {
+      enable = true;
+      timeout = 10;
+    };
+    # syncthing = {
+    #   enable = true;
+    #   username = "snyssen";
+    #   devices = syncthingData.devices;
+    #   folders = {
+    #     Notes = {
+    #       path = "/home/snyssen/Notes";
+    #       devices = [
+    #         "sync.snyssen.be"
+    #         "xps"
+    #         "Pixel 8 Pro"
+    #       ];
+    #     };
+    #   };
+    # };
+
+    printing.enable = true;
+    node-exporter.enable = true;
+    # docker.enable = true;
+    tailscale.enable = true;
+  };
+
+  environment.systemPackages = [
+    pkgs.smartmontools
+    pkgs.tmux
+    pkgs.htop
+  ];
+
+  stylix = {
+    enable = true;
+    image = ../../files/wallpapers/bear1.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/atelier-forest.yaml";
+    polarity = "dark";
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.fira-mono;
+        name = "FiraMono Nerd Font Mono";
+      };
+    };
+  };
+
+  system.name = "sninful";
+  system.stateVersion = "23.05";
+}

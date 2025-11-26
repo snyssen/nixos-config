@@ -8,26 +8,64 @@
           type = "gpt";
           partitions = {
             ESP = {
+              label = "boot";
+              name = "ESP";
+              size = "512M";
               type = "EF00";
-              size = "500M";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
+                mountOptions = [
+                  "defaults"
+                ];
               };
             };
             luks = {
               size = "100%";
+              label = "luks";
               content = {
                 type = "luks";
-                name = "crypted-main";
+                name = "cryptroot";
                 settings.allowDiscards = true; # Allow TRIM operations on SSD
                 passwordFile = "/tmp/secret.key";
                 content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/";
+                  type = "btrfs";
+                  extraArgs = [
+                    "-L"
+                    "nixos"
+                    "-f"
+                  ];
+                  subvolumes = {
+                    "/root" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "subvol=root"
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "subvol=home"
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "subvol=nix"
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/swap" = {
+                      mountpoint = "/swap";
+                      swap.swapfile.size = "8G";
+                    };
+                  };
                 };
               };
             };

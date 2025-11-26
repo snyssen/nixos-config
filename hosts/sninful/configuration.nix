@@ -37,38 +37,37 @@ in
 
     bundles = {
       gnome.enable = true;
-      gaming.enable = true;
+      gaming.enable = false;
     };
 
     grub = {
       enable = true;
       timeout = 10;
     };
-    # syncthing = {
-    #   enable = true;
-    #   username = "snyssen";
-    #   devices = syncthingData.devices;
-    #   folders = {
-    #     Notes = {
-    #       path = "/home/snyssen/Notes";
-    #       devices = [
-    #         "sync.snyssen.be"
-    #         "xps"
-    #         "Pixel 8 Pro"
-    #       ];
-    #     };
-    #   };
-    # };
+    syncthing = {
+      enable = true;
+      username = "snyssen";
+      devices = syncthingData.devices;
+      folders = {
+        Notes = {
+          path = "/home/snyssen/Notes";
+          devices = [
+            "sync.snyssen.be"
+            "xps"
+            "Pixel 8 Pro"
+            "gaming"
+          ];
+        };
+      };
+    };
 
     printing.enable = true;
-    node-exporter.enable = true;
+    node-exporter.enable = false;
     # docker.enable = true;
     tailscale.enable = true;
   };
 
   environment.systemPackages = [
-    pkgs.smartmontools
-    pkgs.tmux
     pkgs.htop
   ];
 

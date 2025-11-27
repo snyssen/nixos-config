@@ -16,6 +16,9 @@ in
   #   "libsoup-2.74.3"
   # ];
 
+  # Fix touchpad not responding -> https://discourse.nixos.org/t/touchpad-not-recognizable/19198/10
+  boot.blacklistedKernelModules = [ "elan_i2c" ];
+
   #########################
 
   imports = [

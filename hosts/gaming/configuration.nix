@@ -82,6 +82,7 @@ in
             "sync.snyssen.be"
             "xps"
             "Pixel 8 Pro"
+            "sninful"
           ];
         };
       };

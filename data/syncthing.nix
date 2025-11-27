@@ -12,5 +12,8 @@
     "Pixel 8 Pro" = {
       id = "DLXNSVV-GZGRYS7-JAZ5KLW-R3DSKMX-NHNUZYL-Y43OE6C-XC2ZNFN-5FEPQA4";
     };
+    "sninful" = {
+      id = "RUPVKFS-XBNCXTY-ZFZN2I5-ECOMFQX-V74LTZR-JSN4BVS-BOTA235-S6Z7FQT";
+    };
   };
 }

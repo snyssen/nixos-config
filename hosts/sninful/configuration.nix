@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }:
@@ -28,6 +29,15 @@ in
     inputs.stylix.nixosModules.stylix
   ];
 
+  specialisation = {
+    gnome.configuration = {
+      myNixOS.bundles = {
+        gnome.enable = true;
+        cosmic.enable = false;
+      };
+    };
+  };
+
   myNixOS = {
     user = {
       enable = true;
@@ -39,8 +49,7 @@ in
     };
 
     bundles = {
-      gnome.enable = true;
-      gaming.enable = false;
+      cosmic.enable = lib.mkDefault true;
     };
 
     grub = {
@@ -65,8 +74,6 @@ in
     };
 
     printing.enable = true;
-    node-exporter.enable = false;
-    # docker.enable = true;
     tailscale.enable = true;
   };
 

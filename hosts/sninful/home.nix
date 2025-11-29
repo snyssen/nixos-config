@@ -10,6 +10,12 @@
 
   #########################
 
+  specialisation = {
+    gnome.configuration = {
+      myHomeManager.dconf.enable = true;
+    };
+  };
+
   myHomeManager = {
     bundles = {
       dev.enable = true;
@@ -17,7 +23,6 @@
 
     git.signingKeyFilename = "id_ed25519.pub";
 
-    dconf.enable = true;
     firefox.enable = true;
   };
 

@@ -2,7 +2,7 @@
 {
   myNixOS = {
     cosmic.enable = true;
-    # cosmic.autoLogin.enable = lib.mkDefault true;
+    cosmic.autoLogin.enable = lib.mkDefault true;
     kbd-layout.enable = true;
     kbd-layout.additionalLayouts = [ "be" ];
     i18n.enable = true;

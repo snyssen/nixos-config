@@ -21,7 +21,7 @@ in
   environment = {
     systemPackages = with pkgs; [
       mangohud
-      protonup
+      protonup-ng
     ];
     # For using protonup
     # Simply run "protonup" in a terminal and it will install the latest ProtonGE and integrate it with Steam

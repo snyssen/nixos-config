@@ -39,7 +39,7 @@
     obsidian
     librewolf
     vesktop
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     protonmail-desktop
     ghostty
     caligula

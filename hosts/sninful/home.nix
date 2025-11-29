@@ -27,7 +27,7 @@
     obsidian
     librewolf
     vesktop
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     protonmail-desktop
     picard
     vlc

@@ -31,6 +31,15 @@ in
     inputs.stylix.nixosModules.stylix
   ];
 
+  specialisation = {
+    cosmic.configuration = {
+      myNixOS.bundles = {
+        gnome.enable = false;
+        cosmic.enable = true;
+      };
+    };
+  };
+
   myNixOS = {
     #* WIP: GPU passthrough
     gpu-passthrough = {
@@ -51,7 +60,7 @@ in
     };
 
     bundles = {
-      gnome.enable = true;
+      gnome.enable = lib.mkDefault true;
       gaming.enable = true;
     };
 

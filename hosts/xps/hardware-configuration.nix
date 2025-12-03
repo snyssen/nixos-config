@@ -5,41 +5,19 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/01281715-cdb8-4c44-8c3a-60f4aab66624";
-      fsType = "ext4";
-    };
-
-  boot.initrd.luks.devices."luks-14476703-5c5b-46e8-bb0b-ab4e51dcfb47".device = "/dev/disk/by-uuid/14476703-5c5b-46e8-bb0b-ab4e51dcfb47";
-  boot.initrd.luks.devices."luks-b77fcebd-4b2f-4445-a99c-0eaed5048fa0".device = "/dev/disk/by-uuid/b77fcebd-4b2f-4445-a99c-0eaed5048fa0";
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/734A-D33C";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/eac5de5f-c0b7-41e1-b190-0790893c3ca9"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-66c29cd85ed5.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp59s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

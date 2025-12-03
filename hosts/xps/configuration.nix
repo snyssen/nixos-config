@@ -24,10 +24,21 @@ in
   #########################
 
   imports = [
+    inputs.disko.nixosModules.disko
+    ./disk-config.nix
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590-nvidia
     inputs.stylix.nixosModules.stylix
   ];
+
+  specialisation = {
+    cosmic.configuration = {
+      myNixOS.bundles = {
+        gnome.enable = false;
+        cosmic.enable = true;
+      };
+    };
+  };
 
   myNixOS = {
     user = {
@@ -40,7 +51,7 @@ in
     };
 
     bundles = {
-      gnome.enable = true;
+      gnome.enable = lib.mkDefault true;
       gaming.enable = true;
     };
 
@@ -73,6 +84,7 @@ in
             "sync.snyssen.be"
             "gaming"
             "Pixel 8 Pro"
+            "sninful"
           ];
         };
       };

@@ -48,6 +48,16 @@ sudo nixos-rebuild switch --flake .#gaming
 
 ## [WIP] Deployment with [nixos-anywhere](https://nix-community.github.io/nixos-anywhere/quickstart.html)
 
+Use live minimal image of nixos, then follow instructions at: https://nixos.org/manual/nixos/stable/#sec-installation-booting-networking
+
+In particular you want:
+
+- Change to keyboard layout: `sudo loadkeys /etc/kbd/keymaps/i386/azerty/be-latin1.map.gz`
+- Connected to Wifi if needed: `nmtui`
+- Set root password: sudo passwd
+
+Most of what is needed is explained at the start of the terminal session. SSH should be enabled automatically and you should be able to login as root. Then from another computer:
+
 ```sh
 echo "my-super-safe-password" > /tmp/secret.key
 

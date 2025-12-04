@@ -75,6 +75,7 @@ in
 
     printing.enable = true;
     tailscale.enable = true;
+    docker.enable = true;
   };
 
   environment.systemPackages = [
